@@ -9,4 +9,8 @@ router.get('/all/users', controller.getUsers);
 // Route to create a new user
 router.post('/user/register', controller.addUser);
 
+
+router.post('/user/login', controller.loginUser);
+
+
 module.exports = router;

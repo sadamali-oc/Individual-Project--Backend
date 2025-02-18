@@ -42,7 +42,42 @@ const addUser = async (req, res) => {
    }
 };
  
+const loginUser = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if username exists
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [username]);
+    const user = result.rows[0];
+
+    if (!user) {
+      return res.status(400).json({ message: 'User not found' });
+    }
+
+    // Compare entered password with hashed password from database
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (passwordMatch) {
+      // Password is correct, return user data (without password)
+      delete user.password;
+      return res.status(200).json({
+        message: 'Login successful',
+        user: {
+          username: user.email,
+          role: user.role,
+        },
+      });
+    } else {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
+  } catch (error) {
+    console.error('Login error:', error.message);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
 module.exports = {
     getUsers,
-    addUser
+    addUser,
+    loginUser,
 };

@@ -20,10 +20,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// Placing this before usersRoutes to avoid conflicts
-app.get('/users/login', (req, res) => {
-  res.render('login');
-});
+// // Placing this before usersRoutes to avoid conflicts
+// app.get('/users/login', (req, res) => {
+//   res.render('login');
+// });
+
+
 
 // Base path for all user-related routes
 app.use("/", usersRoutes);

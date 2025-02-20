@@ -3,5 +3,12 @@ const controller = require('./eventController');
 
 const router = Router();
 
-router.get('/',controller.getEvents);
+router.get('/all/events',controller.getEvents);
+
+router.post('/add/event',controller.addEvent);
+
 module.exports = router;
+
+
+
+

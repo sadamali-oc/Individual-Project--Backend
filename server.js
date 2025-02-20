@@ -31,7 +31,8 @@ app.get("/", (req, res) => {
 app.use("/", usersRoutes);
 
 // Base path for all event-related routes
-app.use("/all/events", eventsRoutes);
+app.use("/", eventsRoutes);
+
 
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);

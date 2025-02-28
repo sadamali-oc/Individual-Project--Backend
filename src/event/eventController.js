@@ -144,7 +144,22 @@ const addEvent = async (req, res) => {
   });
 };
 
+
+//get event by id
+
+const getEventById = async (req, res) => {
+  const id = parseInt(req.params.id);
+  pool.query("SELECT * FROM events WHERE organizer_id = $1", [id], (error, results) => {
+    if (error) {
+      throw error;
+    }
+    res.status(200).json(results.rows);
+  });
+}
+
+
 module.exports = {
   getEvents,
-  addEvent
+  addEvent,
+  getEventById
 };

@@ -3,6 +3,8 @@ const usersRoutes = require("./src/user/userRoutes");
 const eventsRoutes = require('./src/event/eventRoutes');
 const cors = require('cors');
 
+
+
 const app = express();
 const port = 3000; // Define the port
 
@@ -25,6 +27,8 @@ app.get("/", (req, res) => {
 //   res.render('login');
 // });
 
+// app.use("/users", usersRoutes);  // User-related routes
+// app.use("/events", eventsRoutes);  // Event-related routes
 
 
 // Base path for all user-related routes

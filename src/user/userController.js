@@ -2,6 +2,33 @@ const bcrypt = require("bcrypt"); // Import bcrypt
 const pool = require("../../db");
 require("dotenv").config(); // This loads the .env file
 const jwt = require("jsonwebtoken"); // Import JWT for login
+const nodemailer = require("nodemailer"); // Import Nodemailer for sending emails
+
+// Create a transporter for sending emails
+const transporter = nodemailer.createTransport({
+  service: "Gmail", // You can use a different service if needed
+  auth: {
+    user: process.env.EMAIL_USER     ,
+    pass: process.env.EMAIL_PASS, // Your email password or app-specific password
+  },
+});
+
+// Function to send email
+const sendEmail = async (email, subject, text) => {
+  const mailOptions = {
+    from: process.env.EMAIL_USER ,//email
+    to: email, // Recipient's email
+    subject: subject, // Email subject
+    text: text, // Email content
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    console.log("Email sent successfully");
+  } catch (error) {
+    console.error("Error sending email:", error);
+  }
+};
 
 // Get all users
 const getUsers = async (req, res) => {
@@ -38,6 +65,12 @@ const addUser = async (req, res) => {
     // Send back the created user as response (without password)
     const createdUser = result.rows[0];
     delete createdUser.password; // Remove password from response
+
+    // Send a welcome email to the user
+    const emailSubject = "Welcome to our platform!";
+    const emailText = `Hello ${name},\n\nWelcome to our platform. Your registration is successful!`;
+    const emailStatus = await sendEmail(email, emailSubject, emailText);
+
     res.status(201).json(createdUser);
   } catch (error) {
     console.error("Error details:", error.message); // Log the error message

@@ -67,7 +67,7 @@ const addUser = async (req, res) => {
     delete createdUser.password; // Remove password from response
 
     // Send a welcome email to the user
-    const emailSubject = "Welcome to our platform!";
+    const emailSubject = "Welcome to Mora Fusion University Event Management System";
     const emailText = `Hello ${name},\n\nWelcome to our platform. Your registration is successful!`;
     const emailStatus = await sendEmail(email, emailSubject, emailText);
 
@@ -166,9 +166,69 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+
+//update use by ID
+
+const updateUserById = async (req, res) => {
+  const { userId } = req.params; // Extract userId from request params
+  const { name, email, phone_number, password, gender, role, status } = req.body;
+
+  try {
+    // Check if the user exists
+    const userResult = await pool.query("SELECT * FROM users WHERE user_id = $1", [userId]);
+
+    if (userResult.rows.length === 0) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    let hashedPassword = userResult.rows[0].password; // Keep the existing password
+
+    if (password) {
+      // Hash the new password if provided
+      const saltRounds = 10;
+      hashedPassword = await bcrypt.hash(password, saltRounds);
+    }
+
+    // Update user details
+    const updateQuery = `
+      UPDATE users
+      SET name = $1, email = $2, phone_number = $3, password = $4, gender = $5, role = $6, status = $7
+      WHERE user_id = $8
+      RETURNING *;
+    `;
+
+    const updatedUser = await pool.query(updateQuery, [
+      name || userResult.rows[0].name,
+      email || userResult.rows[0].email,
+      phone_number || userResult.rows[0].phone_number,
+      hashedPassword,
+      gender || userResult.rows[0].gender,
+      role || userResult.rows[0].role,
+      status || userResult.rows[0].status,
+      userId
+    ]);
+
+    const user = updatedUser.rows[0];
+    delete user.password; // Remove password from response for security
+
+    res.status(200).json({ message: "User updated successfully", user });
+  } catch (error) {
+    console.error("Error updating user:", error);
+    res.status(500).json({ message: "Internal server error", error: error.message });
+  }
+};
+
+
+
+
+
+
+
 module.exports = {
   getUsers,
   addUser,
   loginUser,
   getUserById,
+  updateUserById
 };

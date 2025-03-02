@@ -4,15 +4,18 @@ const controller = require("./userController");
 const router = Router();
 
 // Route to get all users
-router.get('/all/users', controller.getUsers);
+router.get("/all/users", controller.getUsers);
 
 // Route to create a new user
-router.post('/user/register', controller.addUser);
+router.post("/user/register", controller.addUser);
+
+router.post("/user/auth/login", controller.loginUser);
+
+router.get("/user/profile/:userId", controller.getUserById);
 
 
-router.post('/user/login', controller.loginUser);
+router.put("/user/profile/:userId", controller.updateUserById);
 
-router.get('/user/:userId', controller.getUserById); 
 
 
 module.exports = router;

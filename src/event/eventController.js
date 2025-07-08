@@ -1,165 +1,198 @@
 const pool = require("../../db");
-const multer = require('multer');
-const dayjs = require('dayjs');
-const customParseFormat = require('dayjs/plugin/customParseFormat');
-dayjs.extend(customParseFormat); // Extend dayjs with custom format parsing
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+const dayjs = require("dayjs");
+const customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
 
-// Configure file upload location with Multer
-const upload = multer({ dest: 'uploads/' });
+// --- Multer setup for file uploads ---
+// Save files to /public/uploads so they can be served statically
+const uploadDir = path.join(__dirname, "../../public/uploads");
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
 
-// Use multer middleware to handle file uploads
-const uploadEventFlyer = upload.single('flyer_image');
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, uploadDir);
+  },
+  filename: function (req, file, cb) {
+    // Use timestamp + original filename to avoid collisions
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
 
-// Helper function to convert 12-hour format time to 24-hour format and combine with event_date
-const convertToTimestamp = (eventDateString, startTimeString) => {
-  const eventDate = dayjs(eventDateString); // Parse the event date
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) {
+      cb(null, true);
+    } else {
+      cb(new Error("Only image files are allowed"));
+    }
+  },
+  limits: { fileSize: 5 * 1024 * 1024 }, // max 5MB file size
+});
+
+// Middleware to handle multer errors
+const multerErrorHandler = (err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({ error: err.message });
+  } else if (err) {
+    return res.status(400).json({ error: err.message });
+  }
+  next();
+};
+
+// Helper: Convert 12-hour time + date to timestamp string
+const convertToTimestamp = (eventDateString, timeString) => {
+  const eventDate = dayjs(eventDateString);
   if (!eventDate.isValid()) {
     throw new Error(`Invalid event date: ${eventDateString}`);
   }
 
-  // Parse the start time with explicit format (12-hour time with AM/PM)
-  const startTime = dayjs(startTimeString, ['h:mm A', 'h:mm a']); // Added both capital and lowercase AM/PM formats
-  if (!startTime.isValid()) {
-    throw new Error(`Invalid start time: ${startTimeString}`);
+  const time = dayjs(timeString, ["h:mm A", "h:mm a"]);
+  if (!time.isValid()) {
+    throw new Error(`Invalid time: ${timeString}`);
   }
 
-  // Convert to 24-hour format (HH:mm:ss)
-  const formattedStartTime = startTime.format('HH:mm:ss');
-
-  // Combine event date and formatted time into a valid timestamp
-  return eventDate.set('hour', startTime.hour()).set('minute', startTime.minute()).format('YYYY-MM-DD HH:mm:ss');
+  return eventDate
+    .set("hour", time.hour())
+    .set("minute", time.minute())
+    .set("second", 0)
+    .format("YYYY-MM-DD HH:mm:ss");
 };
+
+// Basic input validation middleware for addEvent
+const validateAddEvent = (req, res, next) => {
+  const { event_name, start_time, end_time, event_date, user_id } = req.body;
+
+  if (!event_name || !start_time || !end_time || !event_date || !user_id) {
+    return res.status(400).json({
+      error: "Missing required fields: event_name, start_time, end_time, event_date, user_id",
+    });
+  }
+  next();
+};
+
+// Placeholder Auth middleware (implement your own)
+const authMiddleware = (req, res, next) => {
+  // Example: check req.headers.authorization or session, etc.
+  // For now allow all
+  next();
+};
+
+// --- Controller functions ---
 
 // Get all events
 const getEvents = async (req, res) => {
-  pool.query("SELECT * FROM events;", (error, results) => {
-    if (error) {
-      throw error;
-    }
+  try {
+    const results = await pool.query("SELECT * FROM events;");
     res.status(200).json(results.rows);
-  });
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    res.status(500).json({ error: "Failed to fetch events" });
+  }
 };
 
-// Add an event
-const addEvent = async (req, res) => {
-  // Make sure to include the multer middleware for file upload
-  uploadEventFlyer(req, res, async (err) => {
-    if (err) {
-      return res.status(500).json({ error: 'File upload error', details: err.message });
-    }
-
-    const {
-      event_name,
-      description,
-      organizer_id,
-      venue_id,
-      status,
-      created_at,
-      event_category,
-      additional_notes,
-      start_time,
-      end_time,
-      flyer_image,
-      event_date, // Date should also be passed along
-    } = req.body;
-
-    console.log('Received body:', req.body);
-
-    // Handle default organizer and venue IDs if not provided
-    const dummyOrganizerId = 1;
-    const dummyVenueId = 1;
-
-    const finalOrganizerId = organizer_id || dummyOrganizerId;
-    const finalVenueId = venue_id || dummyVenueId;
-
-    // Handle flyer image upload (if any)
-    let flyer_image_path = null;
-    if (req.file) {
-      flyer_image_path = req.file.path;
-      console.log('Uploaded flyer image:', flyer_image_path);
-    } else {
-      console.log('No flyer image uploaded');
-    }
-
-    // Validate required fields
-    if (!event_name || !start_time || !end_time || !event_date) {
-      console.log('Error: Missing required fields');
-      return res.status(400).json({ error: 'Missing required fields' });
-    }
-
-    // Convert start_time and event_date into valid timestamp
-    let convertedStartTime, convertedEndTime;
+// Add a new event (with flyer upload)
+const addEvent = [
+  authMiddleware,
+  upload.single("flyer_image"),
+  multerErrorHandler,
+  validateAddEvent,
+  async (req, res) => {
     try {
-      convertedStartTime = convertToTimestamp(event_date, start_time);
-      convertedEndTime = convertToTimestamp(event_date, end_time);
-    } catch (error) {
-      console.log('Error converting start time and event date:', error.message);
-      return res.status(400).json({ error: error.message });
-    }
+      const {
+        event_name,
+        description = null,
+        status = "active",
+        created_at = dayjs().toISOString(),
+        event_category = null,
+        additional_notes = null,
+        start_time,
+        end_time,
+        event_date,
+        user_id,
+        venue_id = 1,
+      } = req.body;
 
-    console.log('Converted start time:', convertedStartTime);
-    console.log('Converted end time:', convertedEndTime);
+      // Convert times
+      const convertedStartTime = convertToTimestamp(event_date, start_time);
+      const convertedEndTime = convertToTimestamp(event_date, end_time);
 
-    // Handle default created_at if not provided
-    const finalCreatedAt = created_at || dayjs().toISOString();
+      // Flyer image path relative to /public
+      const flyer_image_path = req.file
+        ? `/uploads/${req.file.filename}`
+        : null;
 
-    // SQL query to insert event
-    const query = `
-      INSERT INTO events (
-        event_name, description, start_time, end_time, 
-        organizer_id, venue_id, status, created_at, event_category, 
-        additional_notes, flyer_image
-      ) VALUES (
-        $1, $2, $3, $4, $5, 
-        $6, $7, $8, $9, $10, 
-        $11
-      ) RETURNING *;
-    `;
+      const query = `
+        INSERT INTO events (
+          event_name, description, start_time, end_time, venue_id, status, created_at,
+          event_category, additional_notes, flyer_image, user_id
+        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *;
+      `;
 
-    const values = [
-      event_name, 
-      description, 
-      convertedStartTime, 
-      convertedEndTime, 
-      finalOrganizerId, 
-      finalVenueId, 
-      status, 
-      finalCreatedAt, 
-      event_category, 
-      additional_notes, 
-      flyer_image_path
-    ];
+      const values = [
+        event_name,
+        description,
+        convertedStartTime,
+        convertedEndTime,
+        venue_id,
+        status,
+        created_at,
+        event_category,
+        additional_notes,
+        flyer_image_path,
+        user_id,
+      ];
 
-    try {
       const result = await pool.query(query, values);
-      console.log('Event added successfully:', result.rows[0]);
+
       res.status(201).json({
-        message: 'Event added successfully',
-        event: result.rows[0]
+        message: "Event added successfully",
+        event: result.rows[0],
       });
     } catch (error) {
-      console.log('Error adding event:', error);
-      res.status(500).json({ error: 'Failed to add event' });
+      console.error("Error adding event:", error);
+      res.status(500).json({ error: "Failed to add event", details: error.message });
     }
-  });
-};
+  },
+];
 
+// Get events by user ID
+const getEventsByUserId = async (req, res) => {
+  const { userId } = req.params;
+  const parsedUserId = parseInt(userId, 10);
 
-//get event by id
+  if (isNaN(parsedUserId)) {
+    return res.status(400).json({ error: "Invalid user_id parameter" });
+  }
 
-const getEventById = async (req, res) => {
-  const id = parseInt(req.params.id);
-  pool.query("SELECT * FROM events WHERE organizer_id = $1", [id], (error, results) => {
-    if (error) {
-      throw error;
+  try {
+    const results = await pool.query("SELECT * FROM events WHERE user_id = $1", [
+      parsedUserId,
+    ]);
+
+    if (results.rows.length === 0) {
+      return res.status(404).json({ message: "No events found for this user" });
     }
+
     res.status(200).json(results.rows);
-  });
-}
-
+  } catch (error) {
+    console.error("Error fetching events by user:", error);
+    res.status(500).json({ error: "Failed to fetch events for this user" });
+  }
+};
 
 module.exports = {
   getEvents,
   addEvent,
-  getEventById
+  getEventsByUserId,
+  // export middlewares if you want to apply separately
+  multerErrorHandler,
+  validateAddEvent,
+  authMiddleware,
 };

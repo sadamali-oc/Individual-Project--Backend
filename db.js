@@ -1,4 +1,4 @@
-import { Pool } from "pg";
+const Pool = require("pg").Pool;
 // JWT_SECRET="yoursecretkey"
 
 
@@ -10,4 +10,4 @@ import { Pool } from "pg";
   port: 5432,
 });
 
-export default pool;
+module.exports = pool;

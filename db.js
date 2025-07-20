@@ -1,7 +1,5 @@
 const Pool = require("pg").Pool;
-// JWT_SECRET="yoursecretkey"
-
-
+require("dotenv").config();
  const pool = new Pool({
   user: "postgres",
   host: "localhost",

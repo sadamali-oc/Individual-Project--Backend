@@ -1,7 +1,9 @@
 const express = require("express");
 const usersRoutes = require("./src/user/userRoutes");
-const eventsRoutes = require('./src/event/event.routes');
-const cors = require('cors');
+const eventsRoutes = require("./src/event/event.routes");
+const clubRoutes = require("./src/club/club.routes");
+const participationRoutes = require("./src/controllers/participation/participationRoutes");
+const cors = require("cors");
 require("dotenv").config();
 
 const app = express();
@@ -11,9 +13,9 @@ const port = process.env.PORT || 3000;
 
 // Enable CORS with specific settings
 const corsOptions = {
-  origin: 'http://localhost:4200',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: "http://localhost:4200",
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 app.use(express.json());
@@ -28,6 +30,10 @@ app.use("/", usersRoutes);
 
 // Base path for all event-related routes
 app.use("/", eventsRoutes);
+
+app.use("/", clubRoutes);
+
+app.use("/", participationRoutes);
 
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);

@@ -4,6 +4,8 @@ require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const { notifyUserStatus } = require("../event/notificationHelper");
+
 
 // Email transporter setup
 const transporter = nodemailer.createTransport({
@@ -425,20 +427,23 @@ const updateUserStatus = async (req, res) => {
     }
 
     if (userResult.rows[0].role.toLowerCase() === "admin") {
-      // Admin status cannot be changed; always active
-      return res
-        .status(400)
-        .json({
-          message: "Cannot change admin status; admin is always active.",
-        });
+      return res.status(400).json({
+        message: "Cannot change admin status; admin is always active.",
+      });
     }
 
+    // Update status
     const result = await pool.query(
       "UPDATE users SET status = $1 WHERE user_id = $2 RETURNING user_id, name, email, role, status",
       [status, userId]
     );
 
-    res.json({ message: "User status updated", user: result.rows[0] });
+    const updatedUser = result.rows[0];
+
+    // --- Notify user about status change ---
+    await notifyUserStatus(userId, status);
+
+    res.json({ message: "User status updated", user: updatedUser });
   } catch (error) {
     console.error("Error updating user status:", error);
     res.status(500).json({ message: "Internal server error" });

@@ -5,6 +5,12 @@ const fs = require("fs");
 const dayjs = require("dayjs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
+const {
+  createNotification,
+  getUserNotifications,
+  markNotificationRead,
+} = require("./notificationHelper");
+
 
 // --- Multer setup ---
 const uploadDir = path.join(__dirname, "../../public/uploads");
@@ -301,25 +307,45 @@ const getAllOrganizerEvents = async (req, res) => {
 const updateEventStatusAdmin = async (req, res) => {
   const { eventId } = req.params;
   let { status } = req.body;
+
   if (status === "rejected") status = "inactive";
   if (!["active", "inactive"].includes(status))
     return res.status(400).json({ error: "Invalid status" });
 
   try {
+    // Update event status
     const result = await pool.query(
       "UPDATE events SET status=$1 WHERE event_id=$2 RETURNING *",
       [status, eventId]
     );
+
     if (result.rows.length === 0)
       return res.status(404).json({ message: "Event not found" });
-    res
-      .status(200)
-      .json({ message: "Event status updated", event: result.rows[0] });
+
+    const event = result.rows[0];
+
+    // --- Send notification safely ---
+    try {
+      const userId = event.user_id;
+      const message =
+        status === "active"
+          ? `Your event "${event.event_name}" has been approved.`
+          : `Your event "${event.event_name}" has been rejected.`;
+
+      await createNotification(userId, message, eventId);
+    } catch (notifyErr) {
+      console.error("Notification error:", notifyErr);
+    }
+
+    res.status(200).json({ message: "Event status updated", event });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to update status" });
+    console.error("Update event status error:", err);
+    res
+      .status(500)
+      .json({ error: "Failed to update status", details: err.message });
   }
 };
+
 
 // Admin: Delete event
 const deleteEventAdmin = async (req, res) => {

@@ -3,6 +3,7 @@ const usersRoutes = require("./src/user/userRoutes");
 const eventsRoutes = require("./src/event/event.routes");
 const clubRoutes = require("./src/club/club.routes");
 const participationRoutes = require("./src/controllers/participation/participationRoutes");
+const notificationRoutes = require("./src/controllers/notifications/notifications.routes");
 const cors = require("cors");
 require("dotenv").config();
 
@@ -32,6 +33,7 @@ app.use("/", usersRoutes);
 app.use("/", eventsRoutes);
 
 app.use("/", clubRoutes);
+app.use("/", notificationRoutes);
 
 app.use("/", participationRoutes);
 

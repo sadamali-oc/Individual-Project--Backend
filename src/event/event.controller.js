@@ -9,8 +9,7 @@ const {
   createNotification,
   getUserNotifications,
   markNotificationRead,
-} = require("./notificationHelper");
-
+} = require("../utils/notificationHelper");
 
 // --- Multer setup ---
 const uploadDir = path.join(__dirname, "../../public/uploads");
@@ -274,12 +273,10 @@ const updateEventProgress = async (req, res) => {
     );
     if (result.rows.length === 0)
       return res.status(404).json({ message: "Event not found" });
-    res
-      .status(200)
-      .json({
-        message: `Event status updated to ${event_status}`,
-        event: result.rows[0],
-      });
+    res.status(200).json({
+      message: `Event status updated to ${event_status}`,
+      event: result.rows[0],
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to update event" });
@@ -346,7 +343,6 @@ const updateEventStatusAdmin = async (req, res) => {
   }
 };
 
-
 // Admin: Delete event
 const deleteEventAdmin = async (req, res) => {
   const { eventId } = req.params;
@@ -406,7 +402,6 @@ const enrollUserInEvent = async (req, res) => {
     res.status(500).json({ error: "Failed to enroll user" });
   }
 };
-
 
 const getEventEnrollments = async (req, res) => {
   const { eventId } = req.params;
@@ -468,8 +463,6 @@ const getUserEnrolledEvents = async (req, res) => {
   }
 };
 
-
-
 // Get chat messages for an event
 const getEventChat = async (req, res) => {
   const { eventId } = req.params;
@@ -513,7 +506,6 @@ const postEventChat = async (req, res) => {
   }
 };
 
-
 // --- Export ---
 module.exports = {
   getEvents,
@@ -533,5 +525,5 @@ module.exports = {
   authMiddleware,
   getUserEnrolledEvents,
   getEventChat,
-  postEventChat
+  postEventChat,
 };

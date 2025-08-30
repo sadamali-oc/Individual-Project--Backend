@@ -1,9 +1,9 @@
 const express = require("express");
-const usersRoutes = require("./src/user/userRoutes");
-const eventsRoutes = require("./src/event/event.routes");
-const clubRoutes = require("./src/club/club.routes");
-const participationRoutes = require("./src/controllers/participation/participationRoutes");
-const notificationRoutes = require("./src/controllers/notifications/notifications.routes");
+const usersRoutes = require("./src/routes/user.routes");
+const eventsRoutes = require("./src/routes/event.routes");
+const clubRoutes = require("./src/routes/club.routes");
+const participationRoutes = require("./src/routes/participation.routes");
+const notificationRoutes = require("./src/routes/notifications.routes");
 const cors = require("cors");
 require("dotenv").config();
 

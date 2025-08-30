@@ -1,13 +1,13 @@
 // src/controllers/admin/admin.routes.js
 const express = require("express");
 const router = express.Router();
-const pool = require("../../../db");
+const pool = require("../../db");
 const {
   createNotification,
   getUserNotifications,
   markNotificationRead,
   notifyUserStatus,
-} = require("../../event/notificationHelper");
+} = require("../utils/notificationHelper");
 
 // --- Admin: Update user/organizer status ---
 router.put("/user/:userId/status", async (req, res) => {

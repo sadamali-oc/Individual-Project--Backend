@@ -1,11 +1,10 @@
 const bcrypt = require("bcrypt");
-const pool = require("../../db");
+const pool = require("../../../db");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
-const { notifyUserStatus } = require("../event/notificationHelper");
-
+const { notifyUserStatus } = require("../../utils/notificationHelper");
 
 // Email transporter setup
 const transporter = nodemailer.createTransport({

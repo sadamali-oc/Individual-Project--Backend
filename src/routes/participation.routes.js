@@ -1,7 +1,7 @@
 // src/controllers/participation/participationRoutes.js
 const express = require("express");
 const router = express.Router();
-const participationController = require("../participation/participation.controller");
+const participationController = require("../controllers/participation/participation.controller");
 
 router.post("/participate", participationController.participate);
 router.post(

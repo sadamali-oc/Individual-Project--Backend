@@ -1,8 +1,6 @@
 // routes/club.routes.js
 const express = require("express");
-const clubController = require("../../src/club/club.controller");
-
-
+const clubController = require("../controllers/club/club.controller");
 
 const router = express.Router(); // ✅ Correctly use express.Router()
 

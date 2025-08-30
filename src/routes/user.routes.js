@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const controller = require("./user.controller");
+const controller = require("../controllers/user/user.Controller");
 
 const router = Router();
 
@@ -31,6 +31,6 @@ router.get("/users/pending", controller.getPendingUsers);
 // New: Admin updates user status (approve/reject/pending)
 
 router.patch("/user/status/:userId", controller.updateUserStatus);
-router.get("/all/organizers", controller.getAllOrganizers); 
+router.get("/all/organizers", controller.getAllOrganizers);
 
 module.exports = router;

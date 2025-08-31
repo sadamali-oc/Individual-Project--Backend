@@ -41,4 +41,11 @@ router.post("/events/:eventId/chat",controller.postEventChat);
 
 
 
+// Auto-complete events
+router.get("/events/auto-complete", controller.autoCompleteEvents);
+
+router.get("/events/finished/:userId", controller.getFinishedEventsByUserId);
+
+
+
 module.exports = router;

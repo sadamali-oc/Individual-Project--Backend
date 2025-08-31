@@ -34,101 +34,15 @@ const sendEmail = async (email, subject, text) => {
 const getUsers = async (req, res) => {
   try {
     const query = `
-      SELECT 
-        user_id, 
-        name, 
-        email, 
-        phone_number, 
-        gender, 
-        role, 
-        status 
+      SELECT user_id, name, email, phone_number, gender, role, status 
       FROM users 
       WHERE role = 'user'
     `;
-
     const result = await pool.query(query);
     res.status(200).json(result.rows);
   } catch (error) {
-    console.error("❌ Error fetching users:", error.message);
+    console.error("Error fetching users:", error.message);
     res.status(500).json({ message: "Error fetching users" });
-  }
-};
-
-// Forgot Password
-const forgotPassword = async (req, res) => {
-  const { email } = req.body;
-
-  try {
-    // Check if email exists
-    const result = await pool.query("SELECT * FROM users WHERE email = $1", [
-      email,
-    ]);
-    const user = result.rows[0];
-    if (!user)
-      return res.status(404).json({ message: "No user with that email" });
-
-    // Generate a secure reset token
-    const resetToken = crypto.randomBytes(32).toString("hex");
-    const tokenExpires = new Date(Date.now() + 15 * 60 * 1000); // 15 mins
-
-    // Save token and expiry to DB
-    await pool.query(
-      `UPDATE users SET reset_token = $1, reset_token_expiry = $2 WHERE user_id = $3`,
-      [resetToken, tokenExpires, user.user_id]
-    );
-
-    // Send reset email
-    const resetLink = `http://localhost:4200/auth/reset-password?token=${resetToken}`;
-    const subject = "Password Reset Request";
-    const text = `Hello ${user.name},\n\nClick the link below to reset your password:\n${resetLink}\n\nThis link expires in 15 minutes.`;
-
-    await sendEmail(email, subject, text);
-
-    res.status(200).json({ message: "Password reset link sent to email." });
-  } catch (error) {
-    console.error("Forgot password error:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
-
-const resetPassword = async (req, res) => {
-  try {
-    const { token, newPassword } = req.body;
-
-    if (!token || !newPassword) {
-      return res
-        .status(400)
-        .json({ message: "Token and new password are required" });
-    }
-
-    if (newPassword.length < 8) {
-      return res
-        .status(400)
-        .json({ message: "Password must be at least 8 characters long" });
-    }
-
-    // Change from db.query to pool.query
-    const result = await pool.query(
-      `SELECT * FROM users WHERE reset_token = $1 AND reset_token_expiry > NOW()`,
-      [token]
-    );
-
-    if (result.rows.length === 0) {
-      return res.status(400).json({ message: "Invalid or expired token" });
-    }
-
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
-    const userId = result.rows[0].user_id; // user_id, not id
-
-    await pool.query(
-      `UPDATE users SET password = $1, reset_token = NULL, reset_token_expiry = NULL WHERE user_id = $2`,
-      [hashedPassword, userId]
-    );
-
-    res.status(200).json({ message: "Password reset successful" });
-  } catch (error) {
-    console.error("Reset password error:", error);
-    res.status(500).json({ message: "Server error during password reset" });
   }
 };
 
@@ -136,21 +50,58 @@ const resetPassword = async (req, res) => {
 const getUserById = async (req, res) => {
   const { userId } = req.params;
   try {
-    const result = await pool.query(
-      "SELECT user_id, name, email, phone_number, gender, role, status FROM users WHERE user_id = $1",
+    const userResult = await pool.query(
+      "SELECT user_id, name, email, phone_number, gender, role, status, club_id FROM users WHERE user_id=$1",
       [userId]
     );
-    if (result.rows.length === 0)
+
+    if (userResult.rows.length === 0)
       return res.status(404).json({ message: "User not found" });
 
-    res.status(200).json(result.rows[0]);
+    const user = userResult.rows[0];
+
+    let userClubs = [];
+    if (user.role.toLowerCase() === "user") {
+      const clubRes = await pool.query(
+        "SELECT club_id FROM user_clubs WHERE user_id=$1",
+        [userId]
+      );
+      userClubs = clubRes.rows.map((r) => r.club_id);
+    }
+
+    res.status(200).json({ ...user, userClubs });
   } catch (error) {
     console.error("Error fetching user:", error);
     res.status(500).json({ message: "Error fetching user" });
   }
 };
 
-// Get organizers with status = 'pending'
+// Get all organizers (any status)
+const getAllOrganizers = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT 
+        u.user_id, 
+        u.name, 
+        u.email, 
+        u.phone_number, 
+        u.gender, 
+        u.role, 
+        u.status, 
+        c.name AS club_name
+      FROM users u
+      LEFT JOIN clubs c ON u.club_id = c.club_id
+      WHERE u.role = 'organizer'
+    `);
+
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error("Error fetching organizers:", error);
+    res.status(500).json({ message: "Error fetching organizers" });
+  }
+};
+
+// Get pending organizers
 const getPendingOrganizers = async (req, res) => {
   try {
     const result = await pool.query(
@@ -166,7 +117,7 @@ const getPendingOrganizers = async (req, res) => {
   }
 };
 
-// ✅ Get all users with status = 'pending' (Admin only)
+// Get all pending users
 const getPendingUsers = async (req, res) => {
   try {
     const result = await pool.query(
@@ -182,17 +133,25 @@ const getPendingUsers = async (req, res) => {
   }
 };
 
-// Add a new user (status auto 'pending', admin always active)
+// Add new user
 const addUser = async (req, res) => {
-  const { name, email, phone_number, password, gender, role, club_id } =
-    req.body;
+  const {
+    name,
+    email,
+    phone_number,
+    password,
+    gender,
+    role,
+    club_id,
+    userClubs,
+  } = req.body;
 
   if (!name || !email || !password || !gender || !role) {
     return res.status(400).json({ message: "Missing required fields" });
   }
 
   try {
-    // Check if email is already registered
+    // Check if email exists
     const userExists = await pool.query(
       "SELECT * FROM users WHERE email = $1",
       [email]
@@ -201,13 +160,12 @@ const addUser = async (req, res) => {
       return res.status(400).json({ message: "Email already registered" });
     }
 
-    // If role is Organizer, ensure club doesn't already have one
+    // Organizer club validation
     if (role.toLowerCase() === "organizer" && club_id) {
       const existingOrganizer = await pool.query(
         "SELECT * FROM users WHERE club_id = $1 AND LOWER(role) = 'organizer'",
         [club_id]
       );
-
       if (existingOrganizer.rows.length > 0) {
         return res
           .status(400)
@@ -216,12 +174,12 @@ const addUser = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    // Admin status forced to active, others pending
     const defaultStatus = role.toLowerCase() === "admin" ? "active" : "pending";
 
+    // Insert user
     const result = await pool.query(
-      `INSERT INTO users (name, email, phone_number, password, gender, role, status, club_id) 
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8) 
+      `INSERT INTO users (name, email, phone_number, password, gender, role, status, club_id)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
        RETURNING user_id, name, email, phone_number, gender, role, status, club_id`,
       [
         name,
@@ -237,25 +195,59 @@ const addUser = async (req, res) => {
 
     const user = result.rows[0];
 
+    // Insert multiple clubs for normal users
+    let assignedClubs = [];
+    if (
+      role.toLowerCase() === "user" &&
+      Array.isArray(userClubs) &&
+      userClubs.length > 0
+    ) {
+      const insertPromises = userClubs.map((clubId) =>
+        pool.query(
+          "INSERT INTO user_clubs (user_id, club_id) VALUES ($1,$2)",
+          [user.user_id, clubId]
+        )
+      );
+      await Promise.all(insertPromises);
+
+      // Fetch assigned clubs to return
+      const clubRes = await pool.query(
+        "SELECT club_id FROM user_clubs WHERE user_id = $1",
+        [user.user_id]
+      );
+      assignedClubs = clubRes.rows.map((r) => r.club_id);
+    }
+
+    // Send welcome email
     const subject = "Welcome to Mora Fusion University Event Management System";
     const text = `Hello ${name},\n\nYour registration is successful and your account is ${
       defaultStatus === "active" ? "active" : "pending approval"
     }.`;
-
     await sendEmail(email, subject, text);
 
-    res.status(201).json(user);
+    // Return user with assigned clubs
+    res.status(201).json({ ...user, userClubs: assignedClubs });
   } catch (error) {
     console.error("Error adding user:", error);
     res.status(500).json({ message: "Error adding user" });
   }
 };
 
-// Update user by ID (admin status forced active)
+
+// Update user by ID
 const updateUserById = async (req, res) => {
   const { userId } = req.params;
-  const { name, email, phone_number, password, gender, role, status } =
-    req.body;
+  const {
+    name,
+    email,
+    phone_number,
+    password,
+    gender,
+    role,
+    status,
+    club_id,
+    userClubs,
+  } = req.body;
 
   try {
     const userResult = await pool.query(
@@ -266,49 +258,74 @@ const updateUserById = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
 
     let hashedPassword = userResult.rows[0].password;
-    if (password) {
-      hashedPassword = await bcrypt.hash(password, 10);
-    }
+    if (password) hashedPassword = await bcrypt.hash(password, 10);
 
-    // Force admin status = active
-    const isAdmin = userResult.rows[0].role.toLowerCase() === "admin";
-    const finalStatus = isAdmin
+    // Admin status forced active
+    const isAdmin = (role || userResult.rows[0].role).toLowerCase() === "admin";
+    const statusToSet = isAdmin
       ? "active"
       : status || userResult.rows[0].status;
 
-    // If role is changed to admin, force status active
-    const finalRole = role ? role : userResult.rows[0].role;
-    const roleIsAdmin = finalRole.toLowerCase() === "admin";
-    const statusToSet = roleIsAdmin ? "active" : finalStatus;
+    // --- Organizer uniqueness check ---
+    const finalRole = (role || userResult.rows[0].role).toLowerCase();
+    const finalClubId = club_id || userResult.rows[0].club_id;
+    if (finalRole === "organizer" && finalClubId) {
+      const existingOrganizer = await pool.query(
+        "SELECT * FROM users WHERE club_id = $1 AND LOWER(role) = 'organizer' AND user_id != $2",
+        [finalClubId, userId]
+      );
+      if (existingOrganizer.rows.length > 0) {
+        return res
+          .status(400)
+          .json({ message: "This club already has an assigned Organizer" });
+      }
+    }
 
     const updated = await pool.query(
       `UPDATE users 
-       SET name = $1, email = $2, phone_number = $3, password = $4, gender = $5, role = $6, status = $7 
-       WHERE user_id = $8 
-       RETURNING user_id, name, email, phone_number, gender, role, status`,
+       SET name=$1, email=$2, phone_number=$3, password=$4, gender=$5, role=$6, status=$7, club_id=$8
+       WHERE user_id=$9
+       RETURNING user_id, name, email, phone_number, gender, role, status, club_id`,
       [
         name || userResult.rows[0].name,
         email || userResult.rows[0].email,
         phone_number || userResult.rows[0].phone_number,
         hashedPassword,
         gender || userResult.rows[0].gender,
-        finalRole,
+        role || userResult.rows[0].role,
         statusToSet,
+        club_id || userResult.rows[0].club_id,
         userId,
       ]
     );
 
-    res.status(200).json({
-      message: "User updated successfully",
-      user: updated.rows[0],
-    });
+    const user = updated.rows[0];
+
+    // Update userClubs table for normal users
+    if (finalRole === "user") {
+      // Delete existing clubs
+      await pool.query("DELETE FROM user_clubs WHERE user_id=$1", [userId]);
+      // Insert new clubs
+      if (Array.isArray(userClubs) && userClubs.length > 0) {
+        const insertPromises = userClubs.map((clubId) =>
+          pool.query(
+            "INSERT INTO user_clubs (user_id, club_id) VALUES ($1,$2)",
+            [userId, clubId]
+          )
+        );
+        await Promise.all(insertPromises);
+      }
+    }
+
+    res.status(200).json({ message: "User updated successfully", user });
   } catch (error) {
     console.error("Error updating user:", error);
     res.status(500).json({ message: "Error updating user" });
   }
 };
 
-// Delete user by ID (prevent deleting admin)
+
+// Delete user by ID
 const deleteUserById = async (req, res) => {
   const { userId } = req.params;
 
@@ -332,39 +349,76 @@ const deleteUserById = async (req, res) => {
   }
 };
 
-// Approve organizer (admin action)
+// Approve organizer
 const approveOrganizer = async (req, res) => {
   const { userId } = req.params;
 
   try {
     const userResult = await pool.query(
-      "SELECT * FROM users WHERE user_id = $1 AND role = $2 AND status = $3",
-      [userId, "organizer", "pending"]
+      "SELECT * FROM users WHERE user_id=$1 AND role='organizer' AND status='pending'",
+      [userId]
     );
-
     if (userResult.rows.length === 0) {
       return res.status(404).json({ message: "Pending organizer not found" });
     }
 
     const updateResult = await pool.query(
-      "UPDATE users SET status = $1 WHERE user_id = $2 RETURNING user_id, name, email, status",
-      ["active", userId]
+      "UPDATE users SET status='active' WHERE user_id=$1 RETURNING user_id, name, email, status",
+      [userId]
     );
 
     const organizer = updateResult.rows[0];
-
-    // Optional: send approval email
     const subject = "Organizer Account Approved";
     const text = `Hello ${organizer.name},\n\nYour organizer account has been approved. You can now access the organizer dashboard.`;
     await sendEmail(organizer.email, subject, text);
 
-    res.status(200).json({
-      message: "Organizer approved successfully",
-      organizer,
-    });
+    res
+      .status(200)
+      .json({ message: "Organizer approved successfully", organizer });
   } catch (error) {
     console.error("Error approving organizer:", error);
     res.status(500).json({ message: "Error approving organizer" });
+  }
+};
+
+// Update user status (admin only)
+const updateUserStatus = async (req, res) => {
+  const { userId } = req.params;
+  const { status } = req.body;
+  const validStatuses = ["pending", "inactive", "active"];
+
+  if (!validStatuses.includes(status)) {
+    return res.status(400).json({ message: "Invalid status value" });
+  }
+
+  try {
+    const userResult = await pool.query(
+      "SELECT role FROM users WHERE user_id=$1",
+      [userId]
+    );
+    if (userResult.rows.length === 0)
+      return res.status(404).json({ message: "User not found" });
+
+    if (userResult.rows[0].role.toLowerCase() === "admin") {
+      return res
+        .status(400)
+        .json({
+          message: "Cannot change admin status; admin is always active.",
+        });
+    }
+
+    const result = await pool.query(
+      "UPDATE users SET status=$1 WHERE user_id=$2 RETURNING user_id, name, email, role, status",
+      [status, userId]
+    );
+
+    const updatedUser = result.rows[0];
+    await notifyUserStatus(userId, status);
+
+    res.json({ message: "User status updated", user: updatedUser });
+  } catch (error) {
+    console.error("Error updating user status:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 };
 
@@ -372,7 +426,7 @@ const approveOrganizer = async (req, res) => {
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
   try {
-    const result = await pool.query("SELECT * FROM users WHERE email = $1", [
+    const result = await pool.query("SELECT * FROM users WHERE email=$1", [
       username,
     ]);
     const user = result.rows[0];
@@ -385,9 +439,7 @@ const loginUser = async (req, res) => {
     const token = jwt.sign(
       { user_id: user.user_id, role: user.role },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "1h",
-      }
+      { expiresIn: "1h" }
     );
 
     res.status(200).json({
@@ -405,62 +457,69 @@ const loginUser = async (req, res) => {
   }
 };
 
-// New: Update user status (approve/reject/pending) - admin only
-const updateUserStatus = async (req, res) => {
-  const { userId } = req.params;
-  const { status } = req.body;
-
-  const validStatuses = ["pending", "inactive", "active"];
-  if (!validStatuses.includes(status)) {
-    return res.status(400).json({ message: "Invalid status value" });
-  }
-
+// Forgot password
+const forgotPassword = async (req, res) => {
+  const { email } = req.body;
   try {
-    const userResult = await pool.query(
-      "SELECT role FROM users WHERE user_id = $1",
-      [userId]
+    const result = await pool.query("SELECT * FROM users WHERE email=$1", [
+      email,
+    ]);
+    const user = result.rows[0];
+    if (!user)
+      return res.status(404).json({ message: "No user with that email" });
+
+    const resetToken = crypto.randomBytes(32).toString("hex");
+    const tokenExpires = new Date(Date.now() + 15 * 60 * 1000);
+
+    await pool.query(
+      "UPDATE users SET reset_token=$1, reset_token_expiry=$2 WHERE user_id=$3",
+      [resetToken, tokenExpires, user.user_id]
     );
 
-    if (userResult.rows.length === 0) {
-      return res.status(404).json({ message: "User not found" });
-    }
+    const resetLink = `http://localhost:4200/auth/reset-password?token=${resetToken}`;
+    const subject = "Password Reset Request";
+    const text = `Hello ${user.name},\n\nClick the link below to reset your password:\n${resetLink}\n\nThis link expires in 15 minutes.`;
+    await sendEmail(email, subject, text);
 
-    if (userResult.rows[0].role.toLowerCase() === "admin") {
-      return res.status(400).json({
-        message: "Cannot change admin status; admin is always active.",
-      });
-    }
-
-    // Update status
-    const result = await pool.query(
-      "UPDATE users SET status = $1 WHERE user_id = $2 RETURNING user_id, name, email, role, status",
-      [status, userId]
-    );
-
-    const updatedUser = result.rows[0];
-
-    // --- Notify user about status change ---
-    await notifyUserStatus(userId, status);
-
-    res.json({ message: "User status updated", user: updatedUser });
+    res.status(200).json({ message: "Password reset link sent to email." });
   } catch (error) {
-    console.error("Error updating user status:", error);
+    console.error("Forgot password error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
 
-// Get all organizers (any status)
-const getAllOrganizers = async (req, res) => {
+// Reset password
+const resetPassword = async (req, res) => {
+  const { token, newPassword } = req.body;
   try {
-    const result = await pool.query(`
-      SELECT user_id, name, email, phone_number, gender, role, status 
-      FROM users 
-      WHERE role = 'organizer'
-    `);
-    res.status(200).json(result.rows);
+    if (!token || !newPassword)
+      return res
+        .status(400)
+        .json({ message: "Token and new password are required" });
+    if (newPassword.length < 8)
+      return res
+        .status(400)
+        .json({ message: "Password must be at least 8 characters long" });
+
+    const result = await pool.query(
+      "SELECT * FROM users WHERE reset_token=$1 AND reset_token_expiry > NOW()",
+      [token]
+    );
+    if (result.rows.length === 0)
+      return res.status(400).json({ message: "Invalid or expired token" });
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const userId = result.rows[0].user_id;
+
+    await pool.query(
+      "UPDATE users SET password=$1, reset_token=NULL, reset_token_expiry=NULL WHERE user_id=$2",
+      [hashedPassword, userId]
+    );
+
+    res.status(200).json({ message: "Password reset successful" });
   } catch (error) {
-    console.error("Error fetching organizers:", error);
-    res.status(500).json({ message: "Error fetching organizers" });
+    console.error("Reset password error:", error);
+    res.status(500).json({ message: "Server error during password reset" });
   }
 };
 
@@ -469,14 +528,14 @@ module.exports = {
   getUsers,
   getUserById,
   getPendingOrganizers,
-  getPendingUsers, // ✅ new export
+  getPendingUsers,
   addUser,
   getAllOrganizers,
   updateUserById,
   deleteUserById,
   approveOrganizer,
   loginUser,
-  updateUserStatus, // new
+  updateUserStatus,
   forgotPassword,
   resetPassword,
 };

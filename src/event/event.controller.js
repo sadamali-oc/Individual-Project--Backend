@@ -5,11 +5,7 @@ const fs = require("fs");
 const dayjs = require("dayjs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
-const {
-  createNotification,
-  getUserNotifications,
-  markNotificationRead,
-} = require("../utils/notificationHelper");
+const { createNotification } = require("../utils/notificationHelper");
 
 // --- Multer setup ---
 const uploadDir = path.join(__dirname, "../../public/uploads");
@@ -29,7 +25,7 @@ const upload = multer({
     if (file.mimetype.startsWith("image/")) cb(null, true);
     else cb(new Error("Only image files are allowed"));
   },
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5MB
+  limits: { fileSize: 5 * 1024 * 1024 },
 });
 
 const multerErrorHandler = (err, req, res, next) => {
@@ -44,10 +40,8 @@ const convertToTimestamp = (eventDateString, timeString) => {
   const eventDate = dayjs(eventDateString);
   if (!eventDate.isValid())
     throw new Error(`Invalid event date: ${eventDateString}`);
-
   const time = dayjs(timeString, ["h:mm A", "h:mm a"]);
   if (!time.isValid()) throw new Error(`Invalid time: ${timeString}`);
-
   return eventDate
     .set("hour", time.hour())
     .set("minute", time.minute())
@@ -82,7 +76,6 @@ const validateAddEvent = (req, res, next) => {
 
   const validModes = ["online", "physical", "hybrid"];
   const validAudiences = ["open", "club_members", "private", "faculty only"];
-
   if (!validModes.includes(event_mode))
     return res.status(400).json({ error: "Invalid event_mode" });
   if (!validAudiences.includes(audience_type))
@@ -106,8 +99,7 @@ const authMiddleware = (req, res, next) => {
   next();
 };
 
-// --- Controller functions ---
-
+// --- Event Controllers ---
 // Get all events
 const getEvents = async (req, res) => {
   try {
@@ -123,7 +115,6 @@ const getEvents = async (req, res) => {
 const getEventsByUserId = async (req, res) => {
   const userId = parseInt(req.params.userId, 10);
   if (isNaN(userId)) return res.status(400).json({ error: "Invalid user_id" });
-
   try {
     const result = await pool.query("SELECT * FROM events WHERE user_id = $1", [
       userId,
@@ -163,7 +154,6 @@ const addEvent = [
         event_form_link = null,
       } = req.body;
 
-      // Validate organizer
       const userRes = await pool.query(
         "SELECT role, status FROM users WHERE user_id = $1",
         [user_id]
@@ -178,11 +168,9 @@ const addEvent = [
       if (user.status !== "active")
         return res.status(403).json({ error: "Organizer not approved" });
 
-      // Convert times
       const startTimestamp = convertToTimestamp(event_date, start_time);
       const endTimestamp = convertToTimestamp(event_date, end_time);
 
-      // Insert event
       const query = `
         INSERT INTO events
         (event_name, description, start_time, end_time, event_date, venue_id, status, created_at, event_category, additional_notes, flyer_image, user_id, event_form_link, event_mode, location, audience_type)
@@ -225,7 +213,6 @@ const deleteEvent = async (req, res) => {
   const eventId = parseInt(req.params.eventId, 10);
   if (isNaN(eventId))
     return res.status(400).json({ error: "Invalid event_id" });
-
   try {
     const result = await pool.query(
       "DELETE FROM events WHERE event_id = $1 RETURNING *",
@@ -258,6 +245,38 @@ const getEventsForCurrentMonth = async (req, res) => {
   }
 };
 
+// Auto-complete past events (mark as completed)
+const autoCompleteEvents = async () => {
+  try {
+    const result = await pool.query(`
+      UPDATE events
+      SET event_status='completed'
+      WHERE event_status IN ('upcoming','in-progress')
+      AND (event_date + end_time::interval) < NOW()
+      RETURNING *;
+    `);
+    console.log("Auto-completed events:", result.rows.length);
+  } catch (err) {
+    console.error("Auto-complete event error:", err);
+  }
+};
+
+// Get finished events for a user
+const getFinishedEventsByUserId = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    await autoCompleteEvents();
+    const result = await pool.query(
+      "SELECT * FROM events WHERE user_id=$1 AND event_status='completed' ORDER BY event_date DESC",
+      [userId]
+    );
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch finished events" });
+  }
+};
+
 // Update event progress
 const updateEventProgress = async (req, res) => {
   const { eventId } = req.params;
@@ -265,7 +284,6 @@ const updateEventProgress = async (req, res) => {
   const validStatuses = ["upcoming", "in-progress", "completed", "cancelled"];
   if (!validStatuses.includes(event_status))
     return res.status(400).json({ error: "Invalid status" });
-
   try {
     const result = await pool.query(
       "UPDATE events SET event_status=$1 WHERE event_id=$2 RETURNING *",
@@ -273,101 +291,22 @@ const updateEventProgress = async (req, res) => {
     );
     if (result.rows.length === 0)
       return res.status(404).json({ message: "Event not found" });
-    res.status(200).json({
-      message: `Event status updated to ${event_status}`,
-      event: result.rows[0],
-    });
+    res
+      .status(200)
+      .json({
+        message: `Event status updated to ${event_status}`,
+        event: result.rows[0],
+      });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to update event" });
   }
 };
 
-// Admin: Get all organizer events
-const getAllOrganizerEvents = async (req, res) => {
-  try {
-    const result = await pool.query(`
-      SELECT e.*, u.name AS organizer_name, u.email AS organizer_email
-      FROM events e
-      JOIN users u ON e.user_id=u.user_id
-      WHERE u.role='organizer'
-      ORDER BY e.event_date ASC;
-    `);
-    res.status(200).json(result.rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to fetch organizer events" });
-  }
-};
-
-// Admin: Update event status
-const updateEventStatusAdmin = async (req, res) => {
-  const { eventId } = req.params;
-  let { status } = req.body;
-
-  if (status === "rejected") status = "inactive";
-  if (!["active", "inactive"].includes(status))
-    return res.status(400).json({ error: "Invalid status" });
-
-  try {
-    // Update event status
-    const result = await pool.query(
-      "UPDATE events SET status=$1 WHERE event_id=$2 RETURNING *",
-      [status, eventId]
-    );
-
-    if (result.rows.length === 0)
-      return res.status(404).json({ message: "Event not found" });
-
-    const event = result.rows[0];
-
-    // --- Send notification safely ---
-    try {
-      const userId = event.user_id;
-      const message =
-        status === "active"
-          ? `Your event "${event.event_name}" has been approved.`
-          : `Your event "${event.event_name}" has been rejected.`;
-
-      await createNotification(userId, message, eventId);
-    } catch (notifyErr) {
-      console.error("Notification error:", notifyErr);
-    }
-
-    res.status(200).json({ message: "Event status updated", event });
-  } catch (err) {
-    console.error("Update event status error:", err);
-    res
-      .status(500)
-      .json({ error: "Failed to update status", details: err.message });
-  }
-};
-
-// Admin: Delete event
-const deleteEventAdmin = async (req, res) => {
-  const { eventId } = req.params;
-  try {
-    const result = await pool.query(
-      "DELETE FROM events WHERE event_id=$1 RETURNING *",
-      [eventId]
-    );
-    if (result.rows.length === 0)
-      return res.status(404).json({ message: "Event not found" });
-    res
-      .status(200)
-      .json({ message: "Event deleted", deletedEvent: result.rows[0] });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to delete event" });
-  }
-};
-
 // --- Event Enrollment ---
-
 const enrollUserInEvent = async (req, res) => {
   const { eventId } = req.params;
   const { user_id } = req.body;
-
   try {
     const event = await pool.query(
       "SELECT * FROM events WHERE event_id=$1 AND status='active'",
@@ -386,9 +325,8 @@ const enrollUserInEvent = async (req, res) => {
       "SELECT * FROM event_enrollments WHERE event_id=$1 AND user_id=$2",
       [eventId, user_id]
     );
-    if (existing.rows.length > 0) {
-      return res.status(200).json({ message: "User already enrolled" }); // idempotent
-    }
+    if (existing.rows.length > 0)
+      return res.status(200).json({ message: "User already enrolled" });
 
     const result = await pool.query(
       "INSERT INTO event_enrollments (event_id, user_id) VALUES ($1,$2) RETURNING *",
@@ -425,21 +363,16 @@ const getEventEnrollments = async (req, res) => {
 const cancelEnrollment = async (req, res) => {
   const { eventId } = req.params;
   const { user_id } = req.body;
-
   try {
     const result = await pool.query(
       "DELETE FROM event_enrollments WHERE event_id=$1 AND user_id=$2 RETURNING *",
       [eventId, user_id]
     );
-
-    if (result.rows.length === 0) {
-      return res.status(200).json({ message: "Enrollment already cancelled" }); // idempotent
-    }
-
-    res.status(200).json({
-      message: "Enrollment cancelled",
-      enrollment: result.rows[0],
-    });
+    if (result.rows.length === 0)
+      return res.status(200).json({ message: "Enrollment already cancelled" });
+    res
+      .status(200)
+      .json({ message: "Enrollment cancelled", enrollment: result.rows[0] });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to cancel enrollment" });
@@ -448,35 +381,32 @@ const cancelEnrollment = async (req, res) => {
 
 const getUserEnrolledEvents = async (req, res) => {
   const userId = req.params.userId;
-  console.log("Fetching enrollments for user:", userId);
   try {
     const result = await pool.query(
-      // ✅ FIXED
       "SELECT event_id FROM event_enrollments WHERE user_id = $1",
       [userId]
     );
-    console.log("Query result:", result.rows);
     res.json(result.rows.map((r) => r.event_id));
   } catch (err) {
-    console.error("DB error:", err);
+    console.error(err);
     res.status(500).json({ error: "Failed to fetch enrolled events" });
   }
 };
 
-// Get chat messages for an event
+// --- Event Chat ---
 const getEventChat = async (req, res) => {
   const { eventId } = req.params;
-
   try {
     const result = await pool.query(
-      `SELECT ec.chat_id, ec.message, ec.created_at, u.user_id, u.name as user_name
-       FROM event_chat ec
-       JOIN users u ON u.user_id = ec.user_id
-       WHERE ec.event_id = $1
-       ORDER BY ec.created_at ASC`,
+      `
+      SELECT ec.chat_id, ec.message, ec.created_at, u.user_id, u.name as user_name
+      FROM event_chat ec
+      JOIN users u ON u.user_id = ec.user_id
+      WHERE ec.event_id = $1
+      ORDER BY ec.created_at ASC
+    `,
       [eventId]
     );
-
     res.status(200).json(result.rows);
   } catch (err) {
     console.error(err);
@@ -484,25 +414,90 @@ const getEventChat = async (req, res) => {
   }
 };
 
-// Post a new chat message
 const postEventChat = async (req, res) => {
   const { eventId } = req.params;
   const { user_id, message } = req.body;
-
   if (!user_id || !message)
     return res.status(400).json({ error: "Missing user_id or message" });
-
   try {
     const result = await pool.query(
-      `INSERT INTO event_chat (event_id, user_id, message)
-       VALUES ($1, $2, $3) RETURNING *`,
+      "INSERT INTO event_chat (event_id, user_id, message) VALUES ($1, $2, $3) RETURNING *",
       [eventId, user_id, message]
     );
-
     res.status(201).json({ message: "Message sent", chat: result.rows[0] });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Failed to send message" });
+  }
+};
+
+// --- Admin Controllers ---
+const getAllOrganizerEvents = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT e.*, u.name AS organizer_name, u.email AS organizer_email
+      FROM events e
+      JOIN users u ON e.user_id=u.user_id
+      WHERE u.role='organizer'
+      ORDER BY e.event_date ASC
+    `);
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch organizer events" });
+  }
+};
+
+const updateEventStatusAdmin = async (req, res) => {
+  const { eventId } = req.params;
+  let { status } = req.body;
+  if (status === "rejected") status = "inactive";
+  if (!["active", "inactive"].includes(status))
+    return res.status(400).json({ error: "Invalid status" });
+
+  try {
+    const result = await pool.query(
+      "UPDATE events SET status=$1 WHERE event_id=$2 RETURNING *",
+      [status, eventId]
+    );
+    if (result.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+
+    const event = result.rows[0];
+    try {
+      const message =
+        status === "active"
+          ? `Your event "${event.event_name}" has been approved.`
+          : `Your event "${event.event_name}" has been rejected.`;
+      await createNotification(event.user_id, message, eventId);
+    } catch (notifyErr) {
+      console.error("Notification error:", notifyErr);
+    }
+
+    res.status(200).json({ message: "Event status updated", event });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: "Failed to update status", details: err.message });
+  }
+};
+
+const deleteEventAdmin = async (req, res) => {
+  const { eventId } = req.params;
+  try {
+    const result = await pool.query(
+      "DELETE FROM events WHERE event_id=$1 RETURNING *",
+      [eventId]
+    );
+    if (result.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+    res
+      .status(200)
+      .json({ message: "Event deleted", deletedEvent: result.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete event" });
   }
 };
 
@@ -513,6 +508,7 @@ module.exports = {
   addEvent,
   deleteEvent,
   getEventsForCurrentMonth,
+  autoCompleteEvents,
   updateEventProgress,
   getAllOrganizerEvents,
   updateEventStatusAdmin,
@@ -520,10 +516,11 @@ module.exports = {
   enrollUserInEvent,
   getEventEnrollments,
   cancelEnrollment,
-  multerErrorHandler,
-  validateAddEvent,
-  authMiddleware,
   getUserEnrolledEvents,
   getEventChat,
   postEventChat,
+  multerErrorHandler,
+  validateAddEvent,
+  authMiddleware,
+  getFinishedEventsByUserId,
 };

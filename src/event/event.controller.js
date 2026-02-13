@@ -1,0 +1,654 @@
+const pool = require("../../db");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+const dayjs = require("dayjs");
+const customParseFormat = require("dayjs/plugin/customParseFormat");
+dayjs.extend(customParseFormat);
+const { createNotification } = require("../utils/notificationHelper");
+const auditLogger = require("../utils/auditLogger");
+
+// --- Multer setup ---
+const uploadDir = path.join(__dirname, "../../public/uploads");
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadDir),
+  filename: (req, file, cb) => {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+    cb(null, uniqueSuffix + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype.startsWith("image/")) cb(null, true);
+    else cb(new Error("Only image files are allowed"));
+  },
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+const multerErrorHandler = (err, req, res, next) => {
+  if (err instanceof multer.MulterError || err) {
+    return res.status(400).json({ error: err.message });
+  }
+  next();
+};
+
+// --- Helper: convert 12-hour time + date to timestamp ---
+const convertToTimestamp = (eventDateString, timeString) => {
+  const eventDate = dayjs(eventDateString);
+  if (!eventDate.isValid())
+    throw new Error(`Invalid event date: ${eventDateString}`);
+  const time = dayjs(timeString, ["h:mm A", "h:mm a"]);
+  if (!time.isValid()) throw new Error(`Invalid time: ${timeString}`);
+  return eventDate
+    .set("hour", time.hour())
+    .set("minute", time.minute())
+    .set("second", 0)
+    .format("YYYY-MM-DD HH:mm:ss");
+};
+
+// --- Middleware: validate event creation ---
+const validateAddEvent = (req, res, next) => {
+  const {
+    event_name,
+    start_time,
+    end_time,
+    event_date,
+    user_id,
+    event_mode,
+    audience_type,
+    location,
+  } = req.body;
+
+  if (
+    !event_name ||
+    !start_time ||
+    !end_time ||
+    !event_date ||
+    !user_id ||
+    !event_mode ||
+    !audience_type
+  ) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  const validModes = ["online", "physical", "hybrid"];
+  const validAudiences = ["open", "club_members", "private", "faculty only"];
+  if (!validModes.includes(event_mode))
+    return res.status(400).json({ error: "Invalid event_mode" });
+  if (!validAudiences.includes(audience_type))
+    return res.status(400).json({ error: "Invalid audience_type" });
+
+  if (
+    (event_mode === "physical" || event_mode === "hybrid") &&
+    (!location || location.trim() === "")
+  ) {
+    return res
+      .status(400)
+      .json({ error: "Location is required for physical or hybrid events" });
+  }
+
+  next();
+};
+
+// --- Placeholder Auth middleware ---
+const authMiddleware = (req, res, next) => {
+  // Implement authentication logic here
+  next();
+};
+
+// --- Event Controllers ---
+// Get all events
+const getEvents = async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM events;");
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch events" });
+  }
+};
+
+// Get events by user ID
+const getEventsByUserId = async (req, res) => {
+  const userId = parseInt(req.params.userId, 10);
+  if (isNaN(userId)) return res.status(400).json({ error: "Invalid user_id" });
+  try {
+    const result = await pool.query("SELECT * FROM events WHERE user_id = $1", [
+      userId,
+    ]);
+    if (result.rows.length === 0)
+      return res.status(404).json({ message: "No events found" });
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch events" });
+  }
+};
+
+// Add a new event
+const addEvent = [
+  authMiddleware,
+  upload.none(),
+  validateAddEvent,
+  async (req, res) => {
+    try {
+      const {
+        event_name,
+        description = null,
+        start_time,
+        end_time,
+        event_date,
+        flyer_image = null,
+        user_id,
+        event_mode,
+        location = null,
+        audience_type,
+        venue_id = 1,
+        status = "pending",
+        created_at = dayjs().toISOString(),
+        event_category = null,
+        additional_notes = null,
+        event_form_link = null,
+      } = req.body;
+
+      const userRes = await pool.query(
+        "SELECT role, status FROM users WHERE user_id = $1",
+        [user_id]
+      );
+      if (userRes.rows.length === 0)
+        return res.status(404).json({ error: "User not found" });
+      const user = userRes.rows[0];
+      if (user.role !== "organizer")
+        return res
+          .status(403)
+          .json({ error: "Only organizers can create events" });
+      if (user.status !== "active")
+        return res.status(403).json({ error: "Organizer not approved" });
+
+      const startTimestamp = convertToTimestamp(event_date, start_time);
+      const endTimestamp = convertToTimestamp(event_date, end_time);
+
+      const query = `
+        INSERT INTO events
+        (event_name, description, start_time, end_time, event_date, venue_id, status, created_at, event_category, additional_notes, flyer_image, user_id, event_form_link, event_mode, location, audience_type)
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING *;
+      `;
+      const values = [
+        event_name,
+        description,
+        startTimestamp,
+        endTimestamp,
+        event_date,
+        venue_id,
+        status,
+        created_at,
+        event_category,
+        additional_notes,
+        flyer_image,
+        user_id,
+        event_form_link,
+        event_mode,
+        location,
+        audience_type,
+      ];
+
+      const result = await pool.query(query, values);
+      const newEvent = result.rows[0];
+
+      // ✅ LOG EVENT CREATION
+      await auditLogger.log({
+        actor_user_id: req.user?.id || user_id,
+        actor_role: "organizer",
+        action_type: "CREATE_EVENT",
+        resource_type: "event",
+        resource_id: newEvent.event_id,
+        resource_name: newEvent.event_name,
+        status: "success",
+        ip_address: req.ip,
+        new_values: {
+          event_name: newEvent.event_name,
+          event_date: newEvent.event_date,
+          event_mode: newEvent.event_mode,
+          status: newEvent.status,
+        },
+      });
+
+      res.status(201).json({ 
+        message: "Event added successfully", 
+        event: newEvent 
+      });
+    } catch (err) {
+      console.error(err);
+      res
+        .status(500)
+        .json({ error: "Failed to add event", details: err.message });
+    }
+  },
+];
+
+// Delete an event
+const deleteEvent = async (req, res) => {
+  const eventId = parseInt(req.params.eventId, 10);
+  if (isNaN(eventId))
+    return res.status(400).json({ error: "Invalid event_id" });
+  try {
+    // ✅ FETCH EVENT DATA BEFORE DELETION
+    const eventResult = await pool.query(
+      "SELECT event_id, event_name, user_id, event_status FROM events WHERE event_id=$1",
+      [eventId]
+    );
+    if (eventResult.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+    const eventToDelete = eventResult.rows[0];
+
+    // DELETE event
+    const result = await pool.query(
+      "DELETE FROM events WHERE event_id=$1 RETURNING *",
+      [eventId]
+    );
+
+    // ✅ LOG DELETION
+    await auditLogger.log({
+      actor_user_id: req.user.id,
+      actor_role: req.user.role,
+      action_type: "DELETE_EVENT",
+      resource_type: "event",
+      resource_id: eventId,
+      resource_name: eventToDelete.event_name,
+      status: "success",
+      ip_address: req.ip,
+      old_values: {
+        event_name: eventToDelete.event_name,
+        event_status: eventToDelete.event_status,
+        owner_id: eventToDelete.user_id,
+      },
+    });
+
+    res.status(200).json({ 
+      message: "Event deleted", 
+      deletedEvent: result.rows[0] 
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete event" });
+  }
+};
+
+// Get current month events
+const getEventsForCurrentMonth = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT * FROM events
+      WHERE date_trunc('month', event_date) = date_trunc('month', CURRENT_DATE)
+      AND status='active'
+      ORDER BY event_date ASC;
+    `);
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch current month events" });
+  }
+};
+
+// Auto-complete past events (mark as completed)
+const autoCompleteEvents = async () => {
+  try {
+    const result = await pool.query(`
+      UPDATE events
+      SET event_status='completed'
+      WHERE event_status IN ('upcoming','in-progress')
+      AND (event_date + end_time::interval) < NOW()
+      RETURNING *;
+    `);
+    console.log("Auto-completed events:", result.rows.length);
+  } catch (err) {
+    console.error("Auto-complete event error:", err);
+  }
+};
+
+// Get finished events for a user
+const getFinishedEventsByUserId = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    await autoCompleteEvents();
+    const result = await pool.query(
+      "SELECT * FROM events WHERE user_id=$1 AND event_status='completed' ORDER BY event_date DESC",
+      [userId]
+    );
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch finished events" });
+  }
+};
+
+// Update event progress
+const updateEventProgress = async (req, res) => {
+  const { eventId } = req.params;
+  const { event_status } = req.body;
+  const validStatuses = ["upcoming", "in-progress", "completed", "cancelled"];
+  if (!validStatuses.includes(event_status))
+    return res.status(400).json({ error: "Invalid status" });
+  try {
+    // ✅ FETCH OLD VALUES FIRST
+    const oldEventResult = await pool.query(
+      "SELECT event_id, event_name, event_status FROM events WHERE event_id=$1",
+      [eventId]
+    );
+    if (oldEventResult.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+    const oldEvent = oldEventResult.rows[0];
+
+    // UPDATE event
+    const result = await pool.query(
+      "UPDATE events SET event_status=$1 WHERE event_id=$2 RETURNING *",
+      [event_status, eventId]
+    );
+    const updatedEvent = result.rows[0];
+
+    // ✅ LOG UPDATE WITH BEFORE/AFTER VALUES
+    await auditLogger.log({
+      actor_user_id: req.user.id,
+      actor_role: req.user.role,
+      action_type: "UPDATE_EVENT",
+      resource_type: "event",
+      resource_id: eventId,
+      resource_name: updatedEvent.event_name,
+      status: "success",
+      ip_address: req.ip,
+      old_values: {
+        event_status: oldEvent.event_status,
+      },
+      new_values: {
+        event_status: updatedEvent.event_status,
+      },
+    });
+
+    res.status(200).json({
+      message: `Event status updated to ${event_status}`,
+      event: updatedEvent,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to update event" });
+  }
+};
+
+// --- Event Enrollment ---
+const enrollUserInEvent = async (req, res) => {
+  const { eventId } = req.params;
+  const { user_id } = req.body;
+  try {
+    const event = await pool.query(
+      "SELECT * FROM events WHERE event_id=$1 AND status='active'",
+      [eventId]
+    );
+    if (event.rows.length === 0)
+      return res.status(404).json({ error: "Event not found" });
+
+    const user = await pool.query("SELECT * FROM users WHERE user_id=$1", [
+      user_id,
+    ]);
+    if (user.rows.length === 0)
+      return res.status(404).json({ error: "User not found" });
+
+    const existing = await pool.query(
+      "SELECT * FROM event_enrollments WHERE event_id=$1 AND user_id=$2",
+      [eventId, user_id]
+    );
+    if (existing.rows.length > 0)
+      return res.status(200).json({ message: "User already enrolled" });
+
+    const result = await pool.query(
+      "INSERT INTO event_enrollments (event_id, user_id) VALUES ($1,$2) RETURNING *",
+      [eventId, user_id]
+    );
+    res
+      .status(201)
+      .json({ message: "User enrolled", enrollment: result.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to enroll user" });
+  }
+};
+
+const getEventEnrollments = async (req, res) => {
+  const { eventId } = req.params;
+  try {
+    const result = await pool.query(
+      `
+      SELECT u.user_id, u.name, u.email, ee.enrolled_at
+      FROM event_enrollments ee
+      JOIN users u ON ee.user_id = u.user_id
+      WHERE ee.event_id=$1
+    `,
+      [eventId]
+    );
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch enrollments" });
+  }
+};
+
+const cancelEnrollment = async (req, res) => {
+  const { eventId } = req.params;
+  const { user_id } = req.body;
+  try {
+    const result = await pool.query(
+      "DELETE FROM event_enrollments WHERE event_id=$1 AND user_id=$2 RETURNING *",
+      [eventId, user_id]
+    );
+    if (result.rows.length === 0)
+      return res.status(200).json({ message: "Enrollment already cancelled" });
+    res
+      .status(200)
+      .json({ message: "Enrollment cancelled", enrollment: result.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to cancel enrollment" });
+  }
+};
+
+const getUserEnrolledEvents = async (req, res) => {
+  const userId = req.params.userId;
+  try {
+    const result = await pool.query(
+      "SELECT event_id FROM event_enrollments WHERE user_id = $1",
+      [userId]
+    );
+    res.json(result.rows.map((r) => r.event_id));
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch enrolled events" });
+  }
+};
+
+// --- Event Chat ---
+const getEventChat = async (req, res) => {
+  const { eventId } = req.params;
+  try {
+    const result = await pool.query(
+      `
+      SELECT ec.chat_id, ec.message, ec.created_at, u.user_id, u.name as user_name
+      FROM event_chat ec
+      JOIN users u ON u.user_id = ec.user_id
+      WHERE ec.event_id = $1
+      ORDER BY ec.created_at ASC
+    `,
+      [eventId]
+    );
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch chat messages" });
+  }
+};
+
+const postEventChat = async (req, res) => {
+  const { eventId } = req.params;
+  const { user_id, message } = req.body;
+  if (!user_id || !message)
+    return res.status(400).json({ error: "Missing user_id or message" });
+  try {
+    const result = await pool.query(
+      "INSERT INTO event_chat (event_id, user_id, message) VALUES ($1, $2, $3) RETURNING *",
+      [eventId, user_id, message]
+    );
+    res.status(201).json({ message: "Message sent", chat: result.rows[0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to send message" });
+  }
+};
+
+// --- Admin Controllers ---
+const getAllOrganizerEvents = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT e.*, u.name AS organizer_name, u.email AS organizer_email
+      FROM events e
+      JOIN users u ON e.user_id=u.user_id
+      WHERE u.role='organizer'
+      ORDER BY e.event_date ASC
+    `);
+    res.status(200).json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch organizer events" });
+  }
+};
+
+const updateEventStatusAdmin = async (req, res) => {
+  const { eventId } = req.params;
+  let { status } = req.body;
+  if (status === "rejected") status = "inactive";
+  if (!["active", "inactive"].includes(status))
+    return res.status(400).json({ error: "Invalid status" });
+
+  try {
+    // ✅ FETCH OLD VALUES FIRST
+    const oldEventResult = await pool.query(
+      "SELECT event_id, event_name, status FROM events WHERE event_id=$1",
+      [eventId]
+    );
+    if (oldEventResult.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+    const oldEvent = oldEventResult.rows[0];
+
+    // UPDATE event
+    const result = await pool.query(
+      "UPDATE events SET status=$1 WHERE event_id=$2 RETURNING *",
+      [status, eventId]
+    );
+    const event = result.rows[0];
+
+    // ✅ LOG ADMIN UPDATE
+    await auditLogger.log({
+      actor_user_id: req.user.id,
+      actor_role: req.user.role,
+      action_type: "UPDATE_EVENT_ADMIN",
+      resource_type: "event",
+      resource_id: eventId,
+      resource_name: event.event_name,
+      status: "success",
+      ip_address: req.ip,
+      old_values: {
+        status: oldEvent.status,
+      },
+      new_values: {
+        status: event.status,
+      },
+    });
+
+    try {
+      const message =
+        status === "active"
+          ? `Your event "${event.event_name}" has been approved.`
+          : `Your event "${event.event_name}" has been rejected.`;
+      await createNotification(event.user_id, message, eventId);
+    } catch (notifyErr) {
+      console.error("Notification error:", notifyErr);
+    }
+
+    res.status(200).json({ message: "Event status updated", event });
+  } catch (err) {
+    console.error(err);
+    res
+      .status(500)
+      .json({ error: "Failed to update status", details: err.message });
+  }
+};
+
+const deleteEventAdmin = async (req, res) => {
+  const { eventId } = req.params;
+  try {
+    // ✅ FETCH EVENT DATA BEFORE DELETION
+    const eventResult = await pool.query(
+      "SELECT event_id, event_name, user_id, status FROM events WHERE event_id=$1",
+      [eventId]
+    );
+    if (eventResult.rows.length === 0)
+      return res.status(404).json({ message: "Event not found" });
+    const eventToDelete = eventResult.rows[0];
+
+    // DELETE event
+    const result = await pool.query(
+      "DELETE FROM events WHERE event_id=$1 RETURNING *",
+      [eventId]
+    );
+
+    // ✅ LOG ADMIN DELETION
+    await auditLogger.log({
+      actor_user_id: req.user.id,
+      actor_role: req.user.role,
+      action_type: "DELETE_EVENT_ADMIN",
+      resource_type: "event",
+      resource_id: eventId,
+      resource_name: eventToDelete.event_name,
+      status: "success",
+      ip_address: req.ip,
+      old_values: {
+        event_name: eventToDelete.event_name,
+        status: eventToDelete.status,
+        owner_id: eventToDelete.user_id,
+      },
+    });
+
+    res.status(200).json({ 
+      message: "Event deleted", 
+      deletedEvent: result.rows[0] 
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to delete event" });
+  }
+};
+
+// --- Export ---
+module.exports = {
+  getEvents,
+  getEventsByUserId,
+  addEvent,
+  deleteEvent,
+  getEventsForCurrentMonth,
+  autoCompleteEvents,
+  updateEventProgress,
+  getAllOrganizerEvents,
+  updateEventStatusAdmin,
+  deleteEventAdmin,
+  enrollUserInEvent,
+  getEventEnrollments,
+  cancelEnrollment,
+  getUserEnrolledEvents,
+  getEventChat,
+  postEventChat,
+  multerErrorHandler,
+  validateAddEvent,
+  authMiddleware,
+  getFinishedEventsByUserId,
+};

@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const { notifyUserStatus } = require("../../utils/notificationHelper");
+const { body, validationResult, param } = require("express-validator");
 
 // Email transporter setup
 const transporter = nodemailer.createTransport({
@@ -29,6 +30,33 @@ const sendEmail = async (email, subject, text) => {
     console.error("Error sending email:", error);
   }
 };
+
+// ---------------------------
+// Validation Middleware
+// ---------------------------
+const validateUserIdParam = [
+  param("userId").isInt().withMessage("userId must be an integer"),
+];
+
+const validateAddUser = [
+  body("name").trim().isLength({ min: 2, max: 50 }).escape(),
+  body("email").isEmail().normalizeEmail(),
+  body("password").isLength({ min: 8 }),
+  body("role").isIn(["admin", "user", "organizer"]),
+  body("phone_number").optional().isMobilePhone(),
+  body("gender").isIn(["male", "female", "other"]),
+];
+
+const validateUpdateUser = [
+  param("userId").isInt(),
+  body("name").optional().trim().isLength({ min: 2, max: 50 }).escape(),
+  body("email").optional().isEmail().normalizeEmail(),
+  body("password").optional().isLength({ min: 8 }),
+  body("role").optional().isIn(["admin", "user", "organizer"]),
+  body("phone_number").optional().isMobilePhone(),
+  body("gender").optional().isIn(["male", "female", "other"]),
+  body("status").optional().isIn(["pending", "active", "inactive"]),
+];
 
 // Get all users (without passwords)
 const getUsers = async (req, res) => {

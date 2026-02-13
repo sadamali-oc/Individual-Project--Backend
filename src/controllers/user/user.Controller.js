@@ -30,6 +30,7 @@ const sendEmail = async (email, subject, text) => {
   }
 };
 
+
 // Get all users (without passwords)
 const getUsers = async (req, res) => {
   try {

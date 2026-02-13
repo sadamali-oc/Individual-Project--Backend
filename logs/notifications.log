@@ -1,0 +1,8 @@
+{"timestamp":"2026-02-13T08:10:37.119Z","level":"INFO","message":"API: Get notifications request","userId":"invalid_id"}
+{"timestamp":"2026-02-13T08:10:37.127Z","level":"ERROR","message":"Validation failed for user_id","field":"user_id","provided_value":null,"reason":"Invalid user_id"}
+{"timestamp":"2026-02-13T08:10:37.130Z","level":"ERROR","message":"API: Error fetching notifications","userId":"invalid_id","error":"Invalid user_id: must be a positive number"}
+{"timestamp":"2026-02-13T08:10:57.537Z","level":"INFO","message":"API: Mark notification as read request","notification_id":"999"}
+{"timestamp":"2026-02-13T08:10:57.539Z","level":"INFO","message":"Marking notification as read","notification_id":999}
+{"timestamp":"2026-02-13T08:10:57.723Z","level":"WARN","message":"Notification not found","notification_id":999}
+{"timestamp":"2026-02-13T08:10:57.724Z","level":"ERROR","message":"Mark as read error","notification_id":999,"error_message":"Notification with id 999 not found"}
+{"timestamp":"2026-02-13T08:10:57.725Z","level":"ERROR","message":"API: Error updating notification","notification_id":"999","error":"Failed to mark notification as read: Notification with id 999 not found"}

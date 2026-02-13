@@ -4,7 +4,7 @@ require("dotenv").config();
   user: "postgres",
   host: "localhost",
   database: "event_db",
-  password: "2001",
+  password: "Imaa$2001",
   port: 5432,
 });
 

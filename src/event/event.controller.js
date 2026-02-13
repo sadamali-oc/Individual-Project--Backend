@@ -5,7 +5,7 @@ const fs = require("fs");
 const dayjs = require("dayjs");
 const customParseFormat = require("dayjs/plugin/customParseFormat");
 dayjs.extend(customParseFormat);
-const { createNotification } = require("../utils/notificationHelper");
+const { createNotification, sendNotification } = require("../utils/notificationHelper");
 
 
 // --- Multer setup ---
@@ -197,9 +197,24 @@ const addEvent = [
       ];
 
       const result = await pool.query(query, values);
+      const createdEvent = result.rows[0];
+
+      // Fire-and-forget notifications: notify organizer and admins (non-blocking)
+      sendNotification(Number(user_id), `Your event "${event_name}" has been created and is pending approval.`, { sendEmail: true, emailSubject: 'Event Created' })
+        .catch((e) => console.error('Organizer notification error:', e.message));
+
+      pool.query("SELECT user_id FROM users WHERE role='admin'")
+        .then(adminRes => {
+          adminRes.rows.forEach(admin => {
+            sendNotification(Number(admin.user_id), `New event "${event_name}" created by user ${Number(user_id)}.`, { sendEmail: true, emailSubject: 'New Event Created' })
+              .catch(e => console.error('Admin notification error:', e.message));
+          });
+        })
+        .catch(e => console.error('Failed to fetch admins for notifications:', e.message));
+
       res
         .status(201)
-        .json({ message: "Event added successfully", event: result.rows[0] });
+        .json({ message: "Event added successfully", event: createdEvent });
     } catch (err) {
       console.error(err);
       res
@@ -470,7 +485,9 @@ const updateEventStatusAdmin = async (req, res) => {
         status === "active"
           ? `Your event "${event.event_name}" has been approved.`
           : `Your event "${event.event_name}" has been rejected.`;
-      await createNotification(event.user_id, message, eventId);
+      // Use redundant notification (in-app + email)
+      sendNotification(event.user_id, message, { sendEmail: true, emailSubject: `Event ${status === 'active' ? 'Approved' : 'Rejected'}` })
+        .catch(e => console.error('Notification send error:', e.message));
     } catch (notifyErr) {
       console.error("Notification error:", notifyErr);
     }

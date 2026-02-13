@@ -1,5 +1,7 @@
 const pool = require("../../db");
 const logger = require("./logger");
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 // --- Data Integrity Checks ---
 const validateNotificationData = (user_id, message, event_id = null) => {
@@ -49,16 +51,17 @@ const createNotification = async (user_id, message, event_id = null) => {
   try {
     logger.info('Creating notification', { user_id, message_length: message.length, event_id });
 
+    // Insert into notifications table (match current schema: user_id, title?, message, is_read, created_at)
     const result = await pool.query(
-      "INSERT INTO notifications (user_id, message, event_id) VALUES ($1, $2, $3) RETURNING *",
-      [user_id, message, event_id]
+      "INSERT INTO notifications (user_id, message) VALUES ($1, $2) RETURNING *",
+      [user_id, message]
     );
 
     const notification = result.rows[0];
     logger.logDatabaseOperation('INSERT', 'notifications', 'SUCCESS', {
       user_id,
       notification_id: notification.notification_id,
-      event_id
+      message_length: message.length
     });
 
     return notification;
@@ -70,6 +73,72 @@ const createNotification = async (user_id, message, event_id = null) => {
     });
     throw new Error(`Failed to create notification: ${err.message}`);
   }
+};
+
+// --- Send email via SMTP ---
+const sendEmailNotification = async (user_id, subject, text) => {
+  try {
+    const userRes = await pool.query('SELECT email FROM users WHERE user_id=$1', [user_id]);
+    if (userRes.rows.length === 0) {
+      logger.warn('sendEmailNotification: user has no email', { user_id });
+      return null;
+    }
+    const to = userRes.rows[0].email;
+    if (!to) {
+      logger.warn('sendEmailNotification: user email empty', { user_id });
+      return null;
+    }
+
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+      logger.warn('sendEmailNotification: email credentials not set');
+      return null;
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to,
+      subject,
+      text
+    };
+
+    const info = await transporter.sendMail(mailOptions);
+    logger.info('Email sent', { user_id, to, messageId: info.messageId });
+    return info;
+  } catch (err) {
+    logger.error('sendEmailNotification error', { user_id, error: err.message });
+    return null;
+  }
+};
+
+// --- Redundant send: in-app + optional email ---
+const sendNotification = async (user_id, message, options = {}) => {
+  const { sendEmail = false, emailSubject = 'Notification' } = options;
+  const result = { notification: null, email: null };
+  try {
+    result.notification = await createNotification(user_id, message, options.event_id || null);
+  } catch (err) {
+    logger.error('sendNotification: in-app notification failed', { user_id, error: err.message });
+  }
+
+  if (sendEmail) {
+    try {
+      result.email = await sendEmailNotification(user_id, emailSubject, message);
+    } catch (err) {
+      logger.error('sendNotification: email send failed', { user_id, error: err.message });
+    }
+  }
+
+  return result;
 };
 
 // --- Get all notifications for a user ---
@@ -183,4 +252,6 @@ module.exports = {
   getUserNotifications,
   markNotificationRead,
   notifyUserStatus, // added helper for approvals/rejections
+  sendNotification,
+  sendEmailNotification
 };

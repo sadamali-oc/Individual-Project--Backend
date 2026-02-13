@@ -24,18 +24,11 @@ const logger = {
       ...data
     };
 
-    // Log to console
-    const consoleMessage = `[${timestamp}] [${level.toUpperCase()}] ${message}`;
-    console[level === 'error' ? 'error' : level === 'warn' ? 'warn' : 'log'](
-      consoleMessage,
-      Object.keys(data).length > 0 ? data : ''
-    );
-
-    // Log to file
+    // Log to file only
     try {
       fs.appendFileSync(logFile, JSON.stringify(logEntry) + '\n', 'utf8');
     } catch (err) {
-      console.error('Failed to write to log file:', err.message);
+      // Silent fail
     }
   },
 

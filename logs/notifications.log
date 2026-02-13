@@ -1675,3 +1675,903 @@
 {"timestamp":"2026-02-13T13:20:41.795Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
 {"timestamp":"2026-02-13T13:20:41.799Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
 {"timestamp":"2026-02-13T13:20:41.801Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:08:04.983Z","level":"INFO","message":"API: Get notifications request","userId":"2"}
+{"timestamp":"2026-02-13T14:08:05.011Z","level":"INFO","message":"Fetching notifications for user","user_id":2}
+{"timestamp":"2026-02-13T14:08:05.021Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":2,"count":5}
+{"timestamp":"2026-02-13T14:08:05.022Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"2","count":5}
+{"timestamp":"2026-02-13T14:08:14.991Z","level":"INFO","message":"API: Get notifications request","userId":"2"}
+{"timestamp":"2026-02-13T14:08:14.993Z","level":"INFO","message":"Fetching notifications for user","user_id":2}
+{"timestamp":"2026-02-13T14:08:14.997Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":2,"count":5}
+{"timestamp":"2026-02-13T14:08:14.998Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"2","count":5}
+{"timestamp":"2026-02-13T14:08:36.633Z","level":"INFO","message":"API: Get notifications request","userId":"2"}
+{"timestamp":"2026-02-13T14:08:36.640Z","level":"INFO","message":"Fetching notifications for user","user_id":2}
+{"timestamp":"2026-02-13T14:08:36.681Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":2,"count":5}
+{"timestamp":"2026-02-13T14:08:36.683Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"2","count":5}
+{"timestamp":"2026-02-13T14:08:57.483Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:08:57.582Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:08:57.586Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:08:57.591Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:07.476Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:07.479Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:07.481Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:07.483Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:18.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:18.391Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:18.395Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:18.396Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:28.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:28.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:28.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:28.331Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:38.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:38.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:38.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:38.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:48.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:48.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:48.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:48.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:09:58.322Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:09:58.325Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:09:58.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:09:58.329Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:10:08.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:10:08.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:10:08.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:10:08.329Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:10:41.322Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:10:41.484Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:10:41.487Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:10:41.488Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:11:41.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:11:41.493Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:11:41.499Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:11:41.500Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:12:41.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:12:41.398Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:12:41.402Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:12:41.402Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:13:41.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:13:41.385Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:13:41.389Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:13:41.390Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:14:41.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:14:41.385Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:14:41.389Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:14:41.390Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:15:41.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:15:41.496Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:15:41.499Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:15:41.500Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:16:41.319Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:16:41.379Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:16:41.383Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:16:41.384Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:17:41.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:17:41.395Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:17:41.399Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:17:41.400Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:18:41.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:18:41.391Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:18:41.395Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:18:41.396Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:19:41.320Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:19:41.378Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:19:41.382Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:19:41.383Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:20:41.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:20:41.390Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:20:41.393Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:20:41.394Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:21:41.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:21:41.459Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:21:41.468Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:21:41.469Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:21:41.824Z","level":"INFO","message":"API: Get notifications request","userId":"1"}
+{"timestamp":"2026-02-13T14:21:41.826Z","level":"INFO","message":"Fetching notifications for user","user_id":1}
+{"timestamp":"2026-02-13T14:21:41.829Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":1,"count":6}
+{"timestamp":"2026-02-13T14:21:41.830Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"1","count":6}
+{"timestamp":"2026-02-13T14:22:41.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:22:41.396Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:22:41.401Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:22:41.402Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:23:41.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:23:41.397Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:23:41.400Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:23:41.401Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:24:41.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:24:41.402Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:24:41.405Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:24:41.406Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:11.146Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:11.219Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:11.224Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:11.227Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:18.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:18.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:18.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:18.329Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:27.482Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:27.484Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:27.487Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:27.490Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:28.101Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:28.107Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:28.111Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:28.112Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:38.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:38.395Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:38.399Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:38.400Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:48.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:48.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:48.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:48.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:25:58.314Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:25:58.317Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:25:58.319Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:25:58.320Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:26:08.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:26:08.383Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:26:08.387Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:26:08.388Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:26:18.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:26:18.329Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:26:18.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:26:18.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:26:28.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:26:28.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:26:28.331Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:26:28.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:26:38.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:26:38.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:26:38.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:26:38.331Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:27:39.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:27:39.397Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:27:39.403Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:27:39.404Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:28:40.319Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:28:40.372Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:28:40.376Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:28:40.377Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:29:41.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:29:41.393Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:29:41.397Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:29:41.398Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:30:41.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:30:41.409Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:30:41.413Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:30:41.415Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:31:23.212Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:31:23.411Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:31:23.420Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:31:23.423Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:31:33.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:31:33.321Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:31:33.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:31:33.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:31:43.214Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:31:43.216Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:31:43.221Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:31:43.222Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:31:47.850Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:31:47.942Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:31:47.949Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:31:47.970Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:31:58.333Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:31:58.443Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:31:58.446Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:31:58.447Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:08.340Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:08.342Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:08.352Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:08.363Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:18.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:18.335Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:18.341Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:18.348Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:28.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:28.330Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:28.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:28.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:38.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:38.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:38.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:38.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:48.341Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:48.344Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:48.347Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:48.349Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:32:58.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:32:58.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:32:58.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:32:58.339Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:33:41.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:33:41.396Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:33:41.400Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:33:41.402Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:33:52.485Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:33:52.665Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:33:52.670Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:33:52.671Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:03.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:03.499Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:03.503Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:03.504Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:13.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:13.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:13.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:13.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:23.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:23.409Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:23.413Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:23.414Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:33.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:33.324Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:33.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:33.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:43.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:43.490Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:43.494Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:43.495Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:34:53.317Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:34:53.319Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:34:53.321Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:34:53.322Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:35:03.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:35:03.390Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:35:03.395Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:35:03.396Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:35:41.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:35:41.473Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:35:41.481Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:35:41.482Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:36:41.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:36:41.403Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:36:41.408Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:36:41.410Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:37:41.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:37:41.400Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:37:41.405Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:37:41.406Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:38:41.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:38:41.500Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:38:41.504Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:38:41.505Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:39:22.529Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:39:22.591Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:39:22.595Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:39:22.599Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:39:33.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:39:33.415Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:39:33.418Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:39:33.419Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:39:43.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:39:43.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:39:43.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:39:43.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:39:53.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:39:53.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:39:53.322Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:39:53.323Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:40:03.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:40:03.513Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:40:03.519Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:40:03.522Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:40:13.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:40:13.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:40:13.321Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:40:13.322Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:40:23.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:40:23.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:40:23.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:40:23.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:40:33.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:40:33.329Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:40:33.331Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:40:33.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:40:56.277Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:40:56.425Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:40:56.433Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:40:56.437Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:03.317Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:03.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:03.322Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:03.324Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:13.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:13.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:13.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:13.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:23.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:23.333Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:23.335Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:23.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:33.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:33.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:33.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:33.331Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:43.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:43.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:43.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:43.341Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:41:53.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:41:53.334Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:41:53.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:41:53.337Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:03.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:03.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:03.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:03.329Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:13.316Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:13.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:13.321Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:13.322Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:23.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:23.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:23.322Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:23.323Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:33.319Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:33.321Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:33.323Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:33.324Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:43.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:43.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:43.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:43.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:42:53.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:42:53.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:42:53.327Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:42:53.328Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:02.559Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:02.577Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:02.596Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:02.633Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:12.546Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:12.550Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:12.555Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:12.562Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:22.540Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:22.560Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:22.563Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:22.564Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:33.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:33.488Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:33.497Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:33.499Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:44.398Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:44.423Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:44.426Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:44.427Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:43:55.389Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:43:55.468Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:43:55.474Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:43:55.475Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:05.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:05.333Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:05.335Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:05.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:15.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:15.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:15.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:15.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:25.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:25.333Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:25.335Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:25.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:35.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:35.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:35.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:35.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:45.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:45.334Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:45.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:45.337Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:44:55.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:44:55.338Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:44:55.340Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:44:55.341Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:05.319Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:05.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:05.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:05.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:15.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:15.385Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:15.389Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:15.390Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:20.192Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:20.805Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:20.836Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:20.862Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:30.186Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:30.188Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:30.190Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:30.191Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:40.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:40.581Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:40.584Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:40.586Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:45:50.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:45:50.330Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:45:50.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:45:50.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:00.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:00.398Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:00.402Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:00.403Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:10.599Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:10.699Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:10.703Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:10.704Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:20.474Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:20.479Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:20.482Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:20.483Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:24.844Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:25.002Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:25.015Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:25.020Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:35.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:35.555Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:35.565Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:35.567Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:45.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:45.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:45.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:45.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:46:55.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:46:55.411Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:46:55.414Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:46:55.416Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:47:05.316Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:47:05.319Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:47:05.322Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:47:05.323Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:47:15.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:47:15.472Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:47:15.476Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:47:15.477Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:47:25.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:47:25.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:47:25.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:47:25.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:47:35.320Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:47:35.325Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:47:35.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:47:35.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:47:57.293Z","level":"INFO","message":"API: Get notifications request","userId":"1"}
+{"timestamp":"2026-02-13T14:47:57.351Z","level":"INFO","message":"Fetching notifications for user","user_id":1}
+{"timestamp":"2026-02-13T14:47:57.362Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":1,"count":6}
+{"timestamp":"2026-02-13T14:47:57.363Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"1","count":6}
+{"timestamp":"2026-02-13T14:48:36.338Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:48:36.403Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:48:36.407Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:48:36.408Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:49:37.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:49:37.390Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:49:37.394Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:49:37.394Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:50:15.115Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:50:15.123Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:50:15.128Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:50:15.131Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:50:25.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:50:25.489Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:50:25.494Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:50:25.496Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:50:35.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:50:35.339Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:50:35.343Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:50:35.346Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:50:45.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:50:45.324Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:50:45.327Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:50:45.329Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:50:55.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:50:55.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:50:55.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:50:55.331Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:05.334Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:05.409Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:05.413Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:05.414Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:15.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:15.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:15.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:15.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:25.124Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:25.127Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:25.129Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:25.130Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:35.133Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:35.249Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:35.253Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:35.256Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:45.130Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:45.133Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:45.135Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:45.137Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:55.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:51:55.386Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:51:55.389Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:51:55.390Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:51:59.957Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:00.360Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:00.368Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:00.380Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:10.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:10.338Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:10.341Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:10.342Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:20.332Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:20.334Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:20.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:20.337Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:30.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:30.321Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:30.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:30.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:40.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:40.398Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:40.401Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:40.403Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:50.359Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:50.362Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:50.365Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:50.366Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:52:58.525Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:52:58.764Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:52:58.772Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:52:58.779Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:09.337Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:09.538Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:09.546Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:09.547Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:19.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:19.330Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:19.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:19.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:29.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:29.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:29.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:29.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:39.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:39.356Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:39.358Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:39.360Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:49.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:49.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:49.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:49.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:53:59.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:53:59.330Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:53:59.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:53:59.337Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:54:09.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:54:09.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:54:09.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:54:09.337Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:54:35.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:54:35.590Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:54:35.595Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:54:35.604Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:54:45.342Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:54:45.358Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:54:45.360Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:54:45.361Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:54:56.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:54:56.387Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:54:56.391Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:54:56.392Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:55:06.333Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:55:06.335Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:55:06.337Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:55:06.338Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:55:16.333Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:55:16.336Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:55:16.338Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:55:16.339Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:55:26.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:55:26.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:55:26.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:55:26.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:55:36.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:55:36.396Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:55:36.400Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:55:36.401Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:55:46.320Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:55:46.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:55:46.324Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:55:46.325Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:56:18.596Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:56:18.610Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:56:18.620Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:56:18.623Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:56:29.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:56:29.405Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:56:29.409Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:56:29.411Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:56:39.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:56:39.324Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:56:39.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:56:39.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:56:49.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:56:49.498Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:56:49.502Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:56:49.503Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:56:59.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:56:59.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:56:59.335Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:56:59.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:09.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:09.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:09.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:09.331Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:18.606Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:18.609Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:18.611Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:18.612Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:28.604Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:28.607Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:28.608Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:28.609Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:38.606Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:38.610Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:38.612Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:38.615Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:48.606Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:48.609Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:48.611Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:48.612Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:57:59.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:57:59.393Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:57:59.396Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:57:59.397Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:01.643Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:01.646Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:01.648Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:01.649Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:09.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:09.330Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:09.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:09.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:19.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:19.336Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:19.338Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:19.339Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:29.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:29.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:29.342Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:29.343Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:39.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:39.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:39.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:39.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:49.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:49.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:49.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:49.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:58:59.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:58:59.572Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:58:59.576Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:58:59.578Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:09.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:09.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:09.331Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:09.338Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:18.828Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:18.960Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:18.972Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:18.975Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:29.341Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:29.454Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:29.461Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:29.462Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:35.128Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:35.325Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:35.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:35.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:45.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:45.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:45.330Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:45.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T14:59:55.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T14:59:55.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T14:59:55.336Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T14:59:56.669Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:05.084Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:05.086Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:05.088Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:05.090Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:15.086Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:15.089Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:15.091Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:15.092Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:25.151Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:25.220Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:25.224Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:25.224Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:35.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:35.497Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:35.500Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:35.501Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:45.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:45.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:45.334Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:45.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:00:55.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:00:55.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:00:55.332Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:00:55.333Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:05.320Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:05.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:05.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:05.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:15.336Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:15.401Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:15.404Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:15.406Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:25.330Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:25.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:25.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:25.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:35.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:35.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:35.335Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:35.336Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:45.320Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:45.323Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:45.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:45.326Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:01:55.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:01:55.326Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:01:55.328Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:01:55.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:05.322Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:05.325Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:05.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:05.328Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:15.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:15.390Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:15.394Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:15.396Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:25.315Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:25.318Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:25.325Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:25.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:35.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:35.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:35.340Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:35.341Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:45.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:45.332Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:45.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:45.335Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:02:55.318Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:02:55.320Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:02:55.323Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:02:55.325Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:05.331Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:05.394Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:05.400Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:05.401Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:15.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:15.329Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:15.331Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:15.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:25.323Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:25.325Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:25.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:25.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:35.316Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:35.318Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:35.320Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:35.321Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:45.324Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:45.387Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:45.390Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:45.391Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:03:55.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:03:55.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:03:55.338Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:03:55.339Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:05.315Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:05.317Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:05.319Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:05.320Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:15.319Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:15.321Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:15.323Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:15.324Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:25.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:25.329Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:25.331Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:25.332Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:35.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:35.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:35.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:35.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:45.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:45.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:45.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:45.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:04:55.321Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:04:55.324Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:04:55.326Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:04:55.327Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:05:05.326Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:05:05.328Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:05:05.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:05:05.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:05:15.322Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:05:15.327Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:05:15.329Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:05:15.330Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:05:25.328Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:05:25.331Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:05:25.333Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:05:25.334Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:05:41.316Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:05:41.394Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:05:41.398Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:05:41.399Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:06:41.395Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:06:41.469Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:06:41.472Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:06:41.473Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:08:41.347Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:08:41.433Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:08:41.438Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:08:41.439Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:09:41.333Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:09:41.501Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:09:41.505Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:09:41.506Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:10:41.552Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:10:41.617Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:10:41.622Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:10:41.623Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:11:41.327Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:11:41.387Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:11:41.390Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:11:41.391Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:12:41.325Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:12:41.389Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:12:41.393Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:12:41.395Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:13:41.337Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:13:41.417Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:13:41.424Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:13:41.425Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:14:41.333Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:14:41.399Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:14:41.404Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:14:41.404Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:15:41.405Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:15:41.412Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:16:41.428Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:16:41.431Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:17:41.396Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:17:41.400Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:18:41.382Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:18:41.386Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:19:41.385Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:19:41.389Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:20:41.393Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:20:41.397Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:21:41.434Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:21:41.441Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:22:41.393Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:22:41.397Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:23:41.497Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:23:41.501Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:24:41.344Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:24:41.432Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:25:41.329Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:25:41.397Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:26:41.377Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:26:41.450Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}
+{"timestamp":"2026-02-13T15:27:41.348Z","level":"INFO","message":"API: Get notifications request","userId":"4"}
+{"timestamp":"2026-02-13T15:27:41.426Z","level":"INFO","message":"Fetching notifications for user","user_id":4}
+{"timestamp":"2026-02-13T15:27:41.430Z","level":"INFO","message":"Database SELECT on notifications: SUCCESS","operation":"SELECT","table":"notifications","status":"SUCCESS","user_id":4,"count":0}
+{"timestamp":"2026-02-13T15:27:41.430Z","level":"INFO","message":"API: Notifications retrieved successfully","userId":"4","count":0}

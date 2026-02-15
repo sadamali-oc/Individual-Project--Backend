@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "sonar": "node sonar-scanner.js"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +22,9 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.10.0",
     "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "sonarqube-scanner": "^4.3.4"
   }
+  
 }

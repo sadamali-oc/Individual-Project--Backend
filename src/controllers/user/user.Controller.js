@@ -52,7 +52,7 @@ const getUserById = async (req, res) => {
   try {
     const userResult = await pool.query(
       "SELECT user_id, name, email, phone_number, gender, role, status, club_id FROM users WHERE user_id=$1",
-      [userId]
+      [userId],
     );
 
     if (userResult.rows.length === 0)
@@ -64,7 +64,7 @@ const getUserById = async (req, res) => {
     if (user.role.toLowerCase() === "user") {
       const clubRes = await pool.query(
         "SELECT club_id FROM user_clubs WHERE user_id=$1",
-        [userId]
+        [userId],
       );
       userClubs = clubRes.rows.map((r) => r.club_id);
     }
@@ -108,7 +108,7 @@ const getPendingOrganizers = async (req, res) => {
       `SELECT user_id, name, email, phone_number, gender, role, status 
        FROM users 
        WHERE role = $1 AND status = $2`,
-      ["organizer", "pending"]
+      ["organizer", "pending"],
     );
     res.status(200).json(result.rows);
   } catch (error) {
@@ -124,7 +124,7 @@ const getPendingUsers = async (req, res) => {
       `SELECT user_id, name, email, phone_number, gender, role, status 
        FROM users 
        WHERE status = $1`,
-      ["pending"]
+      ["pending"],
     );
     res.status(200).json(result.rows);
   } catch (error) {
@@ -154,7 +154,7 @@ const addUser = async (req, res) => {
     // Check if email exists
     const userExists = await pool.query(
       "SELECT * FROM users WHERE email = $1",
-      [email]
+      [email],
     );
     if (userExists.rows.length > 0) {
       return res.status(400).json({ message: "Email already registered" });
@@ -164,7 +164,7 @@ const addUser = async (req, res) => {
     if (role.toLowerCase() === "organizer" && club_id) {
       const existingOrganizer = await pool.query(
         "SELECT * FROM users WHERE club_id = $1 AND LOWER(role) = 'organizer'",
-        [club_id]
+        [club_id],
       );
       if (existingOrganizer.rows.length > 0) {
         return res
@@ -190,7 +190,7 @@ const addUser = async (req, res) => {
         role,
         defaultStatus,
         club_id || null,
-      ]
+      ],
     );
 
     const user = result.rows[0];
@@ -203,17 +203,17 @@ const addUser = async (req, res) => {
       userClubs.length > 0
     ) {
       const insertPromises = userClubs.map((clubId) =>
-        pool.query(
-          "INSERT INTO user_clubs (user_id, club_id) VALUES ($1,$2)",
-          [user.user_id, clubId]
-        )
+        pool.query("INSERT INTO user_clubs (user_id, club_id) VALUES ($1,$2)", [
+          user.user_id,
+          clubId,
+        ]),
       );
       await Promise.all(insertPromises);
 
       // Fetch assigned clubs to return
       const clubRes = await pool.query(
         "SELECT club_id FROM user_clubs WHERE user_id = $1",
-        [user.user_id]
+        [user.user_id],
       );
       assignedClubs = clubRes.rows.map((r) => r.club_id);
     }
@@ -233,7 +233,6 @@ const addUser = async (req, res) => {
   }
 };
 
-
 // Update user by ID
 const updateUserById = async (req, res) => {
   const { userId } = req.params;
@@ -252,7 +251,7 @@ const updateUserById = async (req, res) => {
   try {
     const userResult = await pool.query(
       "SELECT * FROM users WHERE user_id = $1",
-      [userId]
+      [userId],
     );
     if (userResult.rows.length === 0)
       return res.status(404).json({ message: "User not found" });
@@ -272,7 +271,7 @@ const updateUserById = async (req, res) => {
     if (finalRole === "organizer" && finalClubId) {
       const existingOrganizer = await pool.query(
         "SELECT * FROM users WHERE club_id = $1 AND LOWER(role) = 'organizer' AND user_id != $2",
-        [finalClubId, userId]
+        [finalClubId, userId],
       );
       if (existingOrganizer.rows.length > 0) {
         return res
@@ -296,7 +295,7 @@ const updateUserById = async (req, res) => {
         statusToSet,
         club_id || userResult.rows[0].club_id,
         userId,
-      ]
+      ],
     );
 
     const user = updated.rows[0];
@@ -310,8 +309,8 @@ const updateUserById = async (req, res) => {
         const insertPromises = userClubs.map((clubId) =>
           pool.query(
             "INSERT INTO user_clubs (user_id, club_id) VALUES ($1,$2)",
-            [userId, clubId]
-          )
+            [userId, clubId],
+          ),
         );
         await Promise.all(insertPromises);
       }
@@ -324,7 +323,6 @@ const updateUserById = async (req, res) => {
   }
 };
 
-
 // Delete user by ID
 const deleteUserById = async (req, res) => {
   const { userId } = req.params;
@@ -332,7 +330,7 @@ const deleteUserById = async (req, res) => {
   try {
     const userResult = await pool.query(
       "SELECT * FROM users WHERE user_id = $1",
-      [userId]
+      [userId],
     );
     if (userResult.rows.length === 0)
       return res.status(404).json({ message: "User not found" });
@@ -356,7 +354,7 @@ const approveOrganizer = async (req, res) => {
   try {
     const userResult = await pool.query(
       "SELECT * FROM users WHERE user_id=$1 AND role='organizer' AND status='pending'",
-      [userId]
+      [userId],
     );
     if (userResult.rows.length === 0) {
       return res.status(404).json({ message: "Pending organizer not found" });
@@ -364,7 +362,7 @@ const approveOrganizer = async (req, res) => {
 
     const updateResult = await pool.query(
       "UPDATE users SET status='active' WHERE user_id=$1 RETURNING user_id, name, email, status",
-      [userId]
+      [userId],
     );
 
     const organizer = updateResult.rows[0];
@@ -394,22 +392,20 @@ const updateUserStatus = async (req, res) => {
   try {
     const userResult = await pool.query(
       "SELECT role FROM users WHERE user_id=$1",
-      [userId]
+      [userId],
     );
     if (userResult.rows.length === 0)
       return res.status(404).json({ message: "User not found" });
 
     if (userResult.rows[0].role.toLowerCase() === "admin") {
-      return res
-        .status(400)
-        .json({
-          message: "Cannot change admin status; admin is always active.",
-        });
+      return res.status(400).json({
+        message: "Cannot change admin status; admin is always active.",
+      });
     }
 
     const result = await pool.query(
       "UPDATE users SET status=$1 WHERE user_id=$2 RETURNING user_id, name, email, role, status",
-      [status, userId]
+      [status, userId],
     );
 
     const updatedUser = result.rows[0];
@@ -439,7 +435,7 @@ const loginUser = async (req, res) => {
     const token = jwt.sign(
       { user_id: user.user_id, role: user.role },
       process.env.JWT_SECRET,
-      { expiresIn: "1h" }
+      { expiresIn: "1h" },
     );
 
     res.status(200).json({
@@ -473,7 +469,7 @@ const forgotPassword = async (req, res) => {
 
     await pool.query(
       "UPDATE users SET reset_token=$1, reset_token_expiry=$2 WHERE user_id=$3",
-      [resetToken, tokenExpires, user.user_id]
+      [resetToken, tokenExpires, user.user_id],
     );
 
     const resetLink = `http://localhost:4200/auth/reset-password?token=${resetToken}`;
@@ -503,7 +499,7 @@ const resetPassword = async (req, res) => {
 
     const result = await pool.query(
       "SELECT * FROM users WHERE reset_token=$1 AND reset_token_expiry > NOW()",
-      [token]
+      [token],
     );
     if (result.rows.length === 0)
       return res.status(400).json({ message: "Invalid or expired token" });
@@ -513,7 +509,7 @@ const resetPassword = async (req, res) => {
 
     await pool.query(
       "UPDATE users SET password=$1, reset_token=NULL, reset_token_expiry=NULL WHERE user_id=$2",
-      [hashedPassword, userId]
+      [hashedPassword, userId],
     );
 
     res.status(200).json({ message: "Password reset successful" });
